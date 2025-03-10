@@ -4,37 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campos - Gestión de Aulas</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
 </head>
 <body>
-    <div class="menu-header">
+
+    <!-- Encabezado -->
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
         <span class="user-info">(Usuario)</span>
-        <h1>Campos</h1>
-        <a href="asignar.html" class="back">Volver</a>
+        <h1 class="text-white m-0">Campos</h1>
+        <a href="asignar.html" class="back btn btn-light">Volver</a>
     </div>
 
-    <div class="top-container">
-        <button class="add-button">Añadir</button>
+    <!-- Botón Añadir -->
+    <div class="container mt-4 text-end">
+        <button class="btn btn-danger">Añadir</button>
     </div>
 
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Ingrese búsqueda...">
+    <!-- Barra de búsqueda -->
+    <div class="container mt-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Ingrese búsqueda...">
+        </div>
     </div>
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Capacidad de P.</th>
-                    <th>Nivel Estructural</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se agregarán los resultados dinámicamente -->
-            </tbody>
-        </table>
+    <!-- Tabla de resultados -->
+    <div class="container mt-4">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered text-center">
+                <thead class="table-danger">
+                    <tr>
+                        <th>ID</th>
+                        <th>Capacidad de P.</th>
+                        <th>Nivel Estructural</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se agregarán los resultados dinámicamente -->
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

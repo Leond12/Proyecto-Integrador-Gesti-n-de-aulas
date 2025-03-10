@@ -4,34 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Docente - Gestión de Aulas</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
 </head>
 <body>
-    <div class="menu-header">
+
+    <!-- Encabezado -->
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
         <span class="user-info">(Usuario)</span>
-        <h1>Añadir Docente</h1>
-        <a href="docentes.html" class="back">Volver</a>
+        <h1 class="text-white m-0">Añadir Docente</h1>
+        <a href="docentes.html" class="back btn btn-light">Volver</a>
     </div>
 
-    <div class="form-container">
-        <form action="#" method="post">
-            <div class="input-group">
-                <label for="ci_docente">CI Docente</label>
-                <input type="text" id="ci_docente" name="ci_docente">
-            </div>
+    <!-- Formulario -->
+    <div class="container mt-5">
+        <div class="form-container mx-auto p-4 shadow rounded">
+            <form action="#" method="post">
+                <div class="mb-3">
+                    <label for="ci_docente" class="form-label">CI Docente</label>
+                    <input type="text" id="ci_docente" name="ci_docente" class="form-control">
+                </div>
 
-            <div class="input-group">
-                <label for="nombre_docente">Nombre Docente</label>
-                <input type="text" id="nombre_docente" name="nombre_docente">
-            </div>
+                <div class="mb-3">
+                    <label for="nombre_docente" class="form-label">Nombre Docente</label>
+                    <input type="text" id="nombre_docente" name="nombre_docente" class="form-control">
+                </div>
 
-            <div class="input-group">
-                <label for="telefono">Teléfono</label>
-                <input type="text" id="telefono" name="telefono">
-            </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" id="telefono" name="telefono" class="form-control">
+                </div>
 
-            <button type="submit" class="save-button">Añadir</button>
-        </form>
+                <button type="submit" class="btn btn-danger w-100 save-button">Añadir</button>
+            </form>
+        </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

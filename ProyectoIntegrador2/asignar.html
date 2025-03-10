@@ -4,47 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asignar - Gestión de Aulas</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
 </head>
 <body>
-    <div class="menu-header">
+
+    <!-- Encabezado -->
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
         <span class="user-info">(Usuario)</span>
-        <h1>Asignar</h1>
-        <a href="menu.html" class="back">Volver</a>
+        <h1 class="text-white m-0">Asignar</h1>
+        <a href="menu.html" class="back btn btn-light">Volver</a>
     </div>
 
-    <div class="assign-container">
-        <div class="input-group">
-            <label>Aula / Laboratorio / Salón</label>
-            <div class="input-wrapper">
-                <input type="text" class="input-field" readonly>
-                <button class="search-button">Buscar</button>
-            </div>
-        </div>
+    <!-- Contenedor de asignación -->
+    <div class="container mt-5">
+        <div class="assign-container mx-auto p-4 shadow rounded">
+            <form action="#" method="post">
+                <!-- Aula / Laboratorio / Salón -->
+                <div class="mb-3">
+                    <label class="form-label">Aula / Laboratorio / Salón</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly>
+                        <button class="btn btn-danger">Buscar</button>
+                    </div>
+                </div>
 
-        <div class="input-group">
-            <label>Docente</label>
-            <div class="input-wrapper">
-                <input type="text" class="input-field" readonly>
-                <button class="search-button">Buscar</button>
-            </div>
-        </div>
+                <!-- Docente -->
+                <div class="mb-3">
+                    <label class="form-label">Docente</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly>
+                        <button class="btn btn-danger">Buscar</button>
+                    </div>
+                </div>
 
-        <div class="input-group">
-            <label>Materia</label>
-            <div class="input-wrapper">
-                <input type="text" class="input-field" readonly>
-                <button class="search-button">Buscar</button>
-            </div>
-        </div>
+                <!-- Materia -->
+                <div class="mb-3">
+                    <label class="form-label">Materia</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" readonly>
+                        <button class="btn btn-danger">Buscar</button>
+                    </div>
+                </div>
 
-        <div class="input-group">
-            <label>Turno</label>
-            <input type="text" class="input-field small-input">
-        </div>
+                <!-- Turno -->
+                <div class="mb-3">
+                    <label class="form-label">Turno</label>
+                    <input type="text" class="form-control w-50">
+                </div>
 
-        <button class="save-button">Guardar</button>
+                <!-- Botón Guardar -->
+                <button type="submit" class="btn btn-danger w-100 save-button">Guardar</button>
+            </form>
+        </div>
     </div>
 
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

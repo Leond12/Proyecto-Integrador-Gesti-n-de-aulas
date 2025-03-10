@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú - Gestión de Aulas</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
 </head>
 <body>
-    <div class="menu-header">
+
+    <!-- Encabezado -->
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
         <span class="user-info">(Usuario)</span>
-        <h1>Menú</h1>
-        <a href="login.html" class="logout">Cerrar Sesión</a>
+        <h1 class="text-white m-0">Menú</h1>
+        <a href="login.html" class="btn btn-light">Cerrar Sesión</a>
     </div>
 
-    <div class="menu-container">
-        <button class="menu-button">Buscar Aula/Laboratorio/Salón</button>
-        <button class="menu-button">Asignar Aula/Laboratorio/Salón</button>
+    <!-- Menú de opciones -->
+    <div class="container d-flex flex-column align-items-center mt-5">
+        <button class="btn btn-danger w-100 mb-3" style="max-width: 400px;">Buscar Aula/Laboratorio/Salón</button>
+        <button class="btn btn-danger w-100" style="max-width: 400px;">Asignar Aula/Laboratorio/Salón</button>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
