@@ -33,6 +33,21 @@ body {
     padding: 10px 20px;
 }
 
+/* Contenedor del logo */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Imagen del logo */
+.logo-img {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+}
+
 /* Botón de volver */
 .back {
     color: white;
@@ -157,6 +172,7 @@ th, td {
 .add-button:hover {
     background: #ddd;
 }
+
 /* Responsividad */
 @media (max-width: 768px) {
     .container {
@@ -172,5 +188,8 @@ th, td {
         flex-direction: column;
         text-align: center;
     }
-}
 
+    .logo-img {
+        max-width: 150px;
+    }
+}
