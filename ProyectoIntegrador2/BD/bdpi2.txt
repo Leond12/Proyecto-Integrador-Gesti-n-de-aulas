@@ -1,0 +1,70 @@
+BD PI2
+-----------
+CREATE TABLE Asignado (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_campo INT NOT NULL,
+    id_docente INT NOT NULL,
+    id_materia INT NOT NULL,
+    id_turno INT NOT NULL,
+    id_usuario INT NOT NULL,
+    descripcion TEXT,
+    fecha_inicio DATETIME,
+    fecha_final DATETIME,
+    FOREIGN KEY (id_campo) REFERENCES Campo(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_docente) REFERENCES Docente(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_materia) REFERENCES Materia(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_turno) REFERENCES Turno(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Campo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numero VARCHAR(10) NOT NULL,
+    piso INT NOT NULL,
+    capacidad INT NOT NULL,
+    tipo ENUM('Aula', 'Laboratorio', 'Otro') NOT NULL,
+    descripcion TEXT,
+    estado ENUM('disponible', 'ocupado') DEFAULT 'disponible'
+);
+
+CREATE TABLE Docente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ci VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    telefono VARCHAR(15) NULL
+);
+
+CREATE TABLE Turno (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_final TIME NOT NULL
+);
+
+CREATE TABLE Materia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(10) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    id_facultad INT,
+    FOREIGN KEY (id_facultad) REFERENCES Facultad(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Facultad (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) UNIQUE NOT NULL
+);
+
+
+CREATE TABLE Roles(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rol VARCHAR(20) NOT NULL
+);
+
+
+CREATE TABLE Usuarios(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL,
+    contraseña VARCHAR(50) NOT NULL,
+    id_rol INT,
+    FOREIGN KEY (id_rol) REFERENCES Roles(id) ON DELETE CASCADE
+);
