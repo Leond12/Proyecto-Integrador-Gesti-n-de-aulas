@@ -4,34 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campos</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
     <style>
-        .main-container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 20px auto;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-        }
 
-        .header {
-            background: #E6332A;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            position: relative;
-        }
-
-        .header .back {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
 
         .filters {
             display: flex;
@@ -95,11 +71,10 @@
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <span>(Usuario)</span>
-        <span>Campos</span>
-        <a href="asignar.html" class="back">Volver</a>
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
+        <span class="user-info">(Usuario)</span>
+        <h1 class="text-white m-0">Campos</h1>
+        <a href="asignar.html" class="back btn btn-light">Volver</a>
     </div>
 
     <div class="filters">
