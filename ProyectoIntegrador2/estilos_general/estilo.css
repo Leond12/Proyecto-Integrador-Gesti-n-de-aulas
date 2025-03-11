@@ -158,7 +158,6 @@ th, td {
 .add-button:hover {
     background: #ddd;
 }
-
 /* Responsividad */
 @media (max-width: 768px) {
     .container {
