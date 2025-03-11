@@ -14,7 +14,7 @@ CREATE TABLE Asignado (
     FOREIGN KEY (id_docente) REFERENCES Docente(id) ON DELETE CASCADE,
     FOREIGN KEY (id_materia) REFERENCES Materia(id) ON DELETE CASCADE,
     FOREIGN KEY (id_turno) REFERENCES Turno(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Campo (
