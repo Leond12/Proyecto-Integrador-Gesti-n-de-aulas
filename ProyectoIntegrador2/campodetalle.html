@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles Campo - Gestión de Aulas</title>
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos_general/estilo.css">
+</head>
+<body>
+
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
+        <span class="user-info">(Usuario)</span>
+        <h1 class="text-white m-0">Detalles del Campo</h1>
+        <a href="campos.html" class="back btn btn-light">Volver</a>
+    </div>
+
+    <div class="container mt-5">
+        <div class="form-container mx-auto p-4 shadow rounded">
+            <form action="#" method="post">
+                <div class="mb-3">
+                    <label for="numero" class="form-label">Número de Campo</label>
+                    <input type="text" id="numero" name="numero" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="piso" class="form-label">Piso</label>
+                    <input type="text" id="piso" name="piso" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="capacidad" class="form-label">Capacidad de Personas</label>
+                    <input type="number" id="capacidad" name="capacidad" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">Tipo de Campo</label>
+                    <input type="text" id="tipo" name="tipo" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="estado" class="form-label">Estado</label>
+                    <textarea id="estado" name="estado" rows="4" class="form-control"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-danger w-100 save-button">Añadir</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
