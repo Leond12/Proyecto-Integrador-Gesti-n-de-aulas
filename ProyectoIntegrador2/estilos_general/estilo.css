@@ -72,7 +72,8 @@ body {
 .form-container {
     background: #A01616;
     max-width: 600px;
-    margin: 50px auto;
+    margin-top: 10;
+    margin-bottom: 50px;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
