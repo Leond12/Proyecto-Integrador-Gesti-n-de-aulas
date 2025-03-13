@@ -1,0 +1,43 @@
+INSERT INTO Campo (id,numero, piso, capacidad, tipo, descripcion, estado) 
+VALUES 
+
+(1,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible'),
+(2,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible'),
+(3,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible'),
+(4,'N212', 2, 30, 'Otro', 'NN', 'disponible'),
+(5,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible'),
+(6,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible'),
+
+(7,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible'),
+(8,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible'),
+(9,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible'),
+(10,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible'),
+(11,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible'),
+
+(12,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible'),
+(13,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible'),
+(14,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible'),
+(15,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible'),
+(16,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible'),
+
+(17,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(18,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(19,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(20,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(21,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(22,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(23,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(24,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+
+(25,'N600', 6, 30, 'Aula', 'NN', 'disponible'),
+(26,'N601', 6, 30, 'Aula', 'NN', 'disponible'),
+(27,'N602', 6, 30, 'Otro', 'NN', 'disponible'),
+(28,'N603', 6, 30, 'Otro', 'NN', 'disponible'),
+(29,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible'),
+(30,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible'),
+(31,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible'),
+(32,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible'),
+(33,'N620', 6, 30, 'Aula', 'NN', 'disponible'),
+(34,'N621', 6, 30, 'Aula', 'NN', 'disponible'),
+(35,'N622', 6, 30, 'Aula', 'NN', 'disponible'),
+(36,'N623', 6, 30, 'Aula', 'NN', 'disponible');
