@@ -17,7 +17,8 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow-lg" style="max-width: 350px; width: 100%;">
             <h2 class="text-center mb-3">🔐 Iniciar Sesión</h2>
-            <form action="#" method="post">
+            <div id="messageBox" class="alert d-none"></div> <!-- Mensaje dinámico -->
+            <form>
                 <div class="mb-3">
                     <label for="usuario" class="form-label">👤 Usuario</label>
                     <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Ingrese su usuario">
@@ -33,5 +34,6 @@
 
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="archivos_js/iniciar_sesion.js"></script>
 </body>
 </html>
