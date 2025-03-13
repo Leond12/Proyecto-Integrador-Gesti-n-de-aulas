@@ -20,7 +20,9 @@
     <!-- Formulario -->
     <div class="container mt-5">
         <div class="form-container mx-auto p-4 shadow rounded">
-            <form action="#" method="post">
+            <div id="messageBox" class="alert d-none"></div> <!-- Mensaje dinámico -->
+
+            <form>
                 <div class="mb-3">
                     <label for="codigo" class="form-label">Código</label>
                     <input type="text" id="codigo" name="codigo" class="form-control">
@@ -33,7 +35,9 @@
 
                 <div class="mb-3">
                     <label for="facultad" class="form-label">Facultad</label>
-                    <input type="text" id="facultad" name="facultad" class="form-control">
+                    <select id="facultad" name="facultad" class="form-control">
+                        <!-- Opciones cargadas dinámicamente desde PHP -->
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-danger w-100 save-button">Añadir</button>
@@ -43,5 +47,6 @@
 
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="archivos_js/registro_materia.js"></script>
 </body>
 </html>
