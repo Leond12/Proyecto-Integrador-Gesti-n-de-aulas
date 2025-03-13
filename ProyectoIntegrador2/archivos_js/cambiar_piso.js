@@ -15,12 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mapeo de aulas por piso con posiciones fijas
     const aulasPorPiso = {
         "Piso 2": [
-            { nombre: "N-200", top: "15%", left: "7%",color: "#0ee800", width: "100px", height: "40px", background: "darkgray" },
-            { nombre: "N-201", top: "20%", left: "30%" },
-            { nombre: "N-211", top: "20%", left: "45%" },
-            { nombre: "N-212", top: "30%", left: "60.5%" },
-            { nombre: "N-220", top: "82%", left: "84%" },
-            { nombre: "N-221", top: "10%", left: "84%" }
+            { nombre: "N-200", top: "15%", left: "7%",color: "#gray", width: "100px", height: "40px", background: "#5ce247" },
+            { nombre: "N-201", top: "20%", left: "30%",color: "#gray", width: "100px", height: "40px", background: "#5ce247" },
+            { nombre: "N-211", top: "20%", left: "45%",color: "#gray", width: "100px", height: "40px", background: "#5ce247" },
+            { nombre: "N-212", top: "30%", left: "60.5%",color: "#gray", width: "100px", height: "40px", background: "#5ce247" },
+            { nombre: "N-220", top: "82%", left: "84%",color: "#gray", width: "100px", height: "40px", background: "#5ce247" },
+            { nombre: "N-221", top: "10%", left: "84%",color: "#gray", width: "100px", height: "40px", background: "#5ce247" }
         ],
         "Piso 3": [
             { nombre: "N-300", top: "82%", left: "7%" },
