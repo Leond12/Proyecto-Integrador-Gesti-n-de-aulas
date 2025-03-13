@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mapeo de aulas por piso con posiciones fijas
     const aulasPorPiso = {
         "Piso 2": [
-            { nombre: "N-200", top: "15%", left: "7%"},
+            { nombre: "N-200", top: "15%", left: "7%",color: "#0ee800", width: "100px", height: "40px", background: "darkgray" },
             { nombre: "N-201", top: "20%", left: "30%" },
             { nombre: "N-211", top: "20%", left: "45%" },
             { nombre: "N-212", top: "30%", left: "60.5%" },
@@ -78,28 +78,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function generarAulas(piso) {
         aulasContainer.innerHTML = ""; // Limpiar botones anteriores
-
+    
         if (!aulasPorPiso[piso]) return; // Si no hay aulas para este piso, salir
-
+    
         aulasPorPiso[piso].forEach(aula => {
             const botonAula = document.createElement("button");
             botonAula.textContent = aula.nombre;
             botonAula.classList.add("boton-aula");
-
-            // Posicionamiento específico dentro del contenedor
+    
+            // Aplicar estilos específicos por aula
             botonAula.style.position = "absolute";
             botonAula.style.top = aula.top;
             botonAula.style.left = aula.left;
-            botonAula.style.padding = "5px 10px";
+            botonAula.style.padding = "10px 15px";
+            botonAula.style.width = aula.width;  // Aplica ancho personalizado
+            botonAula.style.height = aula.height;  // Aplica altura personalizada
             botonAula.style.border = "none";
-            botonAula.style.background = "#747474";
-            botonAula.style.color = "white";
+            botonAula.style.background = aula.background;  // Aplica color de fondo personalizado
+            botonAula.style.color = aula.color;  // Aplica color del texto personalizado
+            botonAula.style.fontWeight = "bold"; // Hace el texto más legible
             botonAula.style.borderRadius = "5px";
-            botonAula.style.pointerEvents = "auto"; // Para que los botones sean clickeables
-
+            botonAula.style.pointerEvents = "auto"; 
+    
             aulasContainer.appendChild(botonAula);
         });
     }
+    
+    
 
     // Inicializa el primer piso con sus aulas en posiciones específicas
     generarAulas("Piso 2");
