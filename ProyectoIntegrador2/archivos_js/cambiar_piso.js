@@ -91,18 +91,24 @@ document.addEventListener("DOMContentLoaded", function () {
             botonAula.style.top = aula.top;
             botonAula.style.left = aula.left;
             botonAula.style.padding = "10px 15px";
-            botonAula.style.width = aula.width;  // Aplica ancho personalizado
-            botonAula.style.height = aula.height;  // Aplica altura personalizada
+            botonAula.style.width = aula.width;
+            botonAula.style.height = aula.height;
             botonAula.style.border = "none";
-            botonAula.style.background = aula.background;  // Aplica color de fondo personalizado
-            botonAula.style.color = aula.color;  // Aplica color del texto personalizado
-            botonAula.style.fontWeight = "bold"; // Hace el texto más legible
+            botonAula.style.background = aula.background;
+            botonAula.style.color = aula.color;
+            botonAula.style.fontWeight = "bold";
             botonAula.style.borderRadius = "5px";
-            botonAula.style.pointerEvents = "auto"; 
+            botonAula.style.pointerEvents = "auto";
+    
+            // Redirigir al hacer clic en el botón del aula
+            botonAula.addEventListener("click", function () {
+                window.location.href = `campodetalle.html?id=${aula.nombre.replace("-", "")}`;
+            });
     
             aulasContainer.appendChild(botonAula);
         });
     }
+    
     
     
 
