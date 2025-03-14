@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Hacer una petición al servidor para obtener los detalles del aula
-    fetch(`mostrar_campo.php?id=${encodeURIComponent(campoId)}`)
-
+    fetch(`http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/mostrar_campo.php?campoId=${encodeURIComponent(campoId)}`)
 
         .then(response => response.json())
         .then(data => {

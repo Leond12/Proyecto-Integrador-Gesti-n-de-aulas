@@ -49,7 +49,8 @@
                     <textarea id="estado" name="estado" rows="4" class="form-control" readonly></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-danger w-100 save-button">Añadir</button>
+                <button type="button" class="btn btn-danger w-100 save-button" id="añadir">Añadir</button>
+
             </form>
         </div>
     </div>
@@ -58,6 +59,14 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="archivos_js/mostrar_campo.js"></script>
 
+    <script>
+        document.getElementById("añadir").addEventListener("click", function () {
+            const numeroCampo = document.getElementById("numero").value;
+            localStorage.setItem("campoSeleccionado", numeroCampo); // Guardar en localStorage
+            window.location.href = "asignar.html"; // Redirigir a asignar.html
+        });
+    </script>
+    
 </body>
 </html>
 

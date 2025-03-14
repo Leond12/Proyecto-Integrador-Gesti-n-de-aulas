@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 header("Content-Type: application/json");
 
 // Conexión a la base de datos
@@ -15,18 +19,19 @@ if ($conn->connect_error) {
 }
 
 // Verificar si se proporcionó un ID
-if (!isset($_GET["id"])) {
+if (!isset($_GET["campoId"])) {
     echo json_encode(["error" => "No se proporcionó un ID"]);
     exit;
 }
 
-$id = $_GET["id"];
+$id = $_GET["campoId"];
+
 
 // Convertir el ID en formato compatible (eliminar guiones si existen)
 $id = str_replace("-", "", $id);
 
 // Consulta a la base de datos
-$sql = "SELECT * FROM Campo WHERE REPLACE(numero, '-', '') = ?";
+$sql = "SELECT * FROM Campo WHERE REPLACE(numero, '-', '') = REPLACE(?, '-', '')";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $id);
 $stmt->execute();

@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
             // Redirigir al hacer clic en el botón del aula
             botonAula.addEventListener("click", function () {
-                window.location.href = `campodetalle.html?id=${aula.nombre.replace("-", "")}`;
+                window.location.href = `campodetalle.html?id=${encodeURIComponent(aula.nombre)}`;
             });
     
             aulasContainer.appendChild(botonAula);
