@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para obtener las materias desde el backend
     function fetchMaterias() {
-        fetch("http://localhost/ProyectoIntegrador2/archivos_php/mostrar_materia.php")
+        
+        fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/mostrar_materia.php")
+        //ruta ant       
+        //fetch("http://localhost/ProyectoIntegrador2/archivos_php/mostrar_materia.php")
             .then(response => response.json())
             .then(data => {
                 if (data.success) {

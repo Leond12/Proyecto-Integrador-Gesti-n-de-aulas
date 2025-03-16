@@ -56,5 +56,19 @@
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="archivos_js/mostrar_docente.js"></script>
+
+    <script>
+        document.getElementById("assignBtn").addEventListener("click", function () {
+            let selectedDocente = document.querySelector('input[name="docenteSeleccionado"]:checked');
+            if (selectedDocente) {
+                let docenteNombre = selectedDocente.closest("tr").children[2].textContent; // Captura el nombre del docente
+                localStorage.setItem("docenteSeleccionado", docenteNombre);
+                window.location.href = "asignar.html"; // Redirigir a asignar.html
+            } else {
+                alert("Seleccione un docente antes de asignar.");
+            }
+        });
+    </script>
+    
 </body>
 </html>

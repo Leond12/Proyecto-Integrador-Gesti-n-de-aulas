@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cargar facultades al iniciar la página
     function cargarFacultades() {
-        fetch("http://localhost/ProyectoIntegrador2/archivos_php/obtener_facultades.php")
+        fetch(  "http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/obtener_facultades.php")
+          
+        //ruta anterior
+        //fetch("http://localhost/ProyectoIntegrador2/archivos_php/obtener_facultades.php")
             .then(response => response.json())
             .then(data => {
                 if (data.success) {

@@ -14,7 +14,9 @@ document.getElementById("submitBtn").addEventListener("click", function () {
     formData.append("nombre_docente", nombre_docente);
     formData.append("telefono", telefono);
 
-    fetch("archivos_php/registrar_docente.php", {
+    fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/registrar_docente.php", {
+   
+    //fetch("archivos_php/registrar_docente.php", {
         method: "POST",
         body: formData
     })

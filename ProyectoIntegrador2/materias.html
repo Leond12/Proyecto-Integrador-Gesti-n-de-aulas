@@ -56,5 +56,19 @@
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="archivos_js/mostrar_materia.js"></script>
+
+    <script>
+        document.getElementById("assignBtn").addEventListener("click", function () {
+            let selectedMateria = document.querySelector('input[name="materiaSeleccionada"]:checked');
+            if (selectedMateria) {
+                let materiaNombre = selectedMateria.closest("tr").children[2].textContent; // Captura el nombre de la materia
+                localStorage.setItem("materiaSeleccionada", materiaNombre);
+                window.location.href = "asignar.html"; // Redirigir a asignar.html
+            } else {
+                alert("Seleccione una materia antes de asignar.");
+            }
+        });
+    </script>
+    
 </body>
 </html>
