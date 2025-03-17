@@ -1,0 +1,9 @@
+primero escribir esto-
+ALTER TABLE Campo ADD COLUMN id_turno INT;
+
+luego esto-
+ALTER TABLE Campo ADD CONSTRAINT fk_campo_turno
+FOREIGN KEY (id_turno) REFERENCES Turno(id) ON DELETE SET NULL;
+
+
+realizar todo lo de poblado.txt de nuevo en el sql

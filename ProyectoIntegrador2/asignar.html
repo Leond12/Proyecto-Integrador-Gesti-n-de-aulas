@@ -14,7 +14,7 @@
     <div class="menu-header d-flex justify-content-between align-items-center px-3">
         <span class="user-info">(Usuario)</span>
         <h1 class="text-white m-0">Asignar</h1>
-        <a href="menu.html" class="back btn btn-light">Volver</a>
+        <button onclick="volver()" href="menu.html" class="back btn btn-light clear-all">Volver</button>
     </div>
 
     <!-- Contenedor de asignación -->
@@ -54,11 +54,11 @@
                 <!-- Turno -->
                 <div class="mb-3">
                     <label class="form-label">Turno</label>
-                    <input type="text" class="form-control w-50" id="turno">
+                    <input type="text" class="form-control w-50" id="turno" readonly>
                 </div>
 
                 <!-- Botón Guardar -->
-                <button type="submit" class="btn btn-danger w-100 save-button">Guardar</button>
+                <button id="guardar-asignacion" class="btn btn-success">Guardar Asignación</button>
             </form>
         </div>
     </div>
@@ -66,7 +66,7 @@
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="archivos_js/cargar_datos.js"></script>
-
+    <script src="archivos_js/guardar_asignacion.js"></script>
 
 
 </body>

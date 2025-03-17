@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     const campoId = params.get("id");
+    const turnoSeleccionado = params.get("turno");
 
-    if (!campoId) {
-        alert("No se ha encontrado el aula.");
+    if (!campoId || !turnoSeleccionado) {
+        alert("No se ha encontrado el aula o el turno.");
         return;
     }
 
-    // Hacer una petición al servidor para obtener los detalles del aula
-    fetch(`http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/mostrar_campo.php?campoId=${encodeURIComponent(campoId)}`)
-
+    // Hacer una petición al servidor para obtener los detalles del aula en ese turno
+    fetch(`http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/mostrar_campo.php?id=${encodeURIComponent(campoId)}&turno=${encodeURIComponent(turnoSeleccionado)}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -24,9 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("tipo").value = data.tipo || "";
             document.getElementById("descripcion").value = data.descripcion || "";
             document.getElementById("estado").value = data.estado || "";
+            document.getElementById("turno").value = `Turno ${turnoSeleccionado}`;
         })
-        .catch(error => {
+        /*.catch(error => {
             console.error("Error:", error);
             alert("Hubo un problema al cargar los datos del aula.");
-        });
+        });*/
 });

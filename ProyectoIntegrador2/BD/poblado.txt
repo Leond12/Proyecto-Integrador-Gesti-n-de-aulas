@@ -1,43 +1,237 @@
-INSERT INTO Campo (id,numero, piso, capacidad, tipo, descripcion, estado) 
+INSERT INTO `turno` (`id`, `nombre`, `hora_inicio`, `hora_final`) VALUES 
+('1', 'Mañana 7-10', '7:15:00', '10:15:00'),
+('2', 'Mañana 10-13', '10:15:00', '13:15:00'),
+('3', 'Mañana 13-16', '13:15:00', '16:15:00'),
+('4', 'Tarde 16-19', '16:15:00', '19:15:00'),
+('5', 'Noche 19-22', '19:15:00', '22:15:00');
+
+
+---------------------------------------------------------------------------
+INSERT INTO Campo (id,numero, piso, capacidad, tipo, descripcion, estado, id_turno) 
 VALUES 
 
-(1,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible'),
-(2,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible'),
-(3,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible'),
-(4,'N212', 2, 30, 'Otro', 'NN', 'disponible'),
-(5,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible'),
-(6,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible'),
 
-(7,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible'),
-(8,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible'),
-(9,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible'),
-(10,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible'),
-(11,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible'),
 
-(12,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible'),
-(13,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible'),
-(14,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible'),
-(15,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible'),
-(16,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible'),
+(1,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible',1),
+(2,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible',2),
+(3,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible',3),
+(4,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible',4),
+(5,'N200', 2, 30, 'Laboratorio', 'NN', 'disponible',5),
 
-(17,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(18,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(19,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(20,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(21,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(22,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(23,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible'),
-(24,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible'),
+(6,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible',1),
+(7,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible',2),
+(8,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible',3),
+(9,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible',4),
+(10,'N201', 2, 30, 'Laboratorio', 'NN', 'disponible',5),
 
-(25,'N600', 6, 30, 'Aula', 'NN', 'disponible'),
-(26,'N601', 6, 30, 'Aula', 'NN', 'disponible'),
-(27,'N602', 6, 30, 'Otro', 'NN', 'disponible'),
-(28,'N603', 6, 30, 'Otro', 'NN', 'disponible'),
-(29,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible'),
-(30,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible'),
-(31,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible'),
-(32,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible'),
-(33,'N620', 6, 30, 'Aula', 'NN', 'disponible'),
-(34,'N621', 6, 30, 'Aula', 'NN', 'disponible'),
-(35,'N622', 6, 30, 'Aula', 'NN', 'disponible'),
-(36,'N623', 6, 30, 'Aula', 'NN', 'disponible');
+(11,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible',1),
+(12,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible',2),
+(13,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible',3),
+(14,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible',4),
+(15,'N211', 2, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(16,'N212', 2, 30, 'Otro', 'NN', 'disponible',1),
+(17,'N212', 2, 30, 'Otro', 'NN', 'disponible',2),
+(18,'N212', 2, 30, 'Otro', 'NN', 'disponible',3),
+(19,'N212', 2, 30, 'Otro', 'NN', 'disponible',4),
+(20,'N212', 2, 30, 'Otro', 'NN', 'disponible',5),
+
+(21,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible',1),
+(22,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible',2),
+(23,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible',3),
+(24,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible',4),
+(25,'N220', 2, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(26,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible',1),
+(27,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible',2),
+(28,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible',3),
+(29,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible',4),
+(30,'N221', 2, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+
+
+(31,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible',1),
+(32,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible',2),
+(33,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible',3),
+(34,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible',4),
+(35,'N300', 3, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(36,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible',1),
+(37,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible',2),
+(38,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible',3),
+(39,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible',4),
+(40,'N301', 3, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(41,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible',1),
+(42,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible',2),
+(43,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible',3),
+(44,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible',4),
+(45,'N302', 3, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(46,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',1),
+(47,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',2),
+(48,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',3),
+(49,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',4),
+(50,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(51,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',1),
+(52,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',2),
+(53,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',3),
+(54,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',4),
+(55,'NLS', 3, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+
+
+(56,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible',1),
+(57,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible',2),
+(58,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible',3),
+(59,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible',4),
+(60,'N400', 4, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(61,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible',1),
+(62,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible',2),
+(63,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible',3),
+(64,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible',4),
+(65,'N401', 4, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(66,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible',1),
+(67,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible',2),
+(68,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible',3),
+(69,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible',4),
+(70,'N402', 4, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(71,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible',1),
+(72,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible',2),
+(73,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible',3),
+(74,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible',4),
+(75,'N420', 4, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(76,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible',1),
+(77,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible',2),
+(78,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible',3),
+(79,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible',4),
+(80,'N421', 4, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+
+
+(81,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(82,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(83,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(84,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(85,'N500', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(86,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(87,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(88,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(89,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(90,'N501', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(91,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(92,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(93,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(94,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(95,'N502', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(96,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(97,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(98,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(99,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(100,'N503', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(101,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(102,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(103,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(104,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(105,'N510', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(106,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(107,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(108,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(109,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(110,'N520', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(111,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(112,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(113,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(114,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(115,'N521', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(116,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible',1),
+(117,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible',2),
+(118,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible',3),
+(119,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible',4),
+(120,'N522', 5, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+
+
+(121,'N600', 6, 30, 'Aula', 'NN', 'disponible',1),
+(122,'N600', 6, 30, 'Aula', 'NN', 'disponible',2),
+(123,'N600', 6, 30, 'Aula', 'NN', 'disponible',3),
+(124,'N600', 6, 30, 'Aula', 'NN', 'disponible',4),
+(125,'N600', 6, 30, 'Aula', 'NN', 'disponible',5),
+
+(126,'N601', 6, 30, 'Aula', 'NN', 'disponible',1),
+(127,'N601', 6, 30, 'Aula', 'NN', 'disponible',2),
+(128,'N601', 6, 30, 'Aula', 'NN', 'disponible',3),
+(129,'N601', 6, 30, 'Aula', 'NN', 'disponible',4),
+(130,'N601', 6, 30, 'Aula', 'NN', 'disponible',5),
+
+(131,'N602', 6, 30, 'Otro', 'NN', 'disponible',1),
+(132,'N602', 6, 30, 'Otro', 'NN', 'disponible',2),
+(133,'N602', 6, 30, 'Otro', 'NN', 'disponible',3),
+(134,'N602', 6, 30, 'Otro', 'NN', 'disponible',4),
+(135,'N602', 6, 30, 'Otro', 'NN', 'disponible',5),
+
+(136,'N603', 6, 30, 'Otro', 'NN', 'disponible',1),
+(137,'N603', 6, 30, 'Otro', 'NN', 'disponible',2),
+(138,'N603', 6, 30, 'Otro', 'NN', 'disponible',3),
+(139,'N603', 6, 30, 'Otro', 'NN', 'disponible',4),
+(140,'N603', 6, 30, 'Otro', 'NN', 'disponible',5),
+
+(141,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible',1),
+(142,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible',2),
+(143,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible',3),
+(144,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible',4),
+(145,'N604', 6, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(146,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible',1),
+(147,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible',2),
+(148,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible',3),
+(149,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible',4),
+(150,'N605', 6, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(151,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible',1),
+(152,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible',2),
+(153,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible',3),
+(154,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible',4),
+(155,'N606', 6, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(156,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible',1),
+(157,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible',2),
+(158,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible',3),
+(159,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible',4),
+(160,'N610', 6, 30, 'Laboratorio', 'NN', 'disponible',5),
+
+(161,'N620', 6, 30, 'Aula', 'NN', 'disponible',1),
+(162,'N620', 6, 30, 'Aula', 'NN', 'disponible',2),
+(163,'N620', 6, 30, 'Aula', 'NN', 'disponible',3),
+(164,'N620', 6, 30, 'Aula', 'NN', 'disponible',4),
+(165,'N620', 6, 30, 'Aula', 'NN', 'disponible',5),
+
+(166,'N621', 6, 30, 'Aula', 'NN', 'disponible',1),
+(167,'N621', 6, 30, 'Aula', 'NN', 'disponible',2),
+(168,'N621', 6, 30, 'Aula', 'NN', 'disponible',3),
+(169,'N621', 6, 30, 'Aula', 'NN', 'disponible',4),
+(170,'N621', 6, 30, 'Aula', 'NN', 'disponible',5),
+
+(171,'N622', 6, 30, 'Aula', 'NN', 'disponible',1),
+(172,'N622', 6, 30, 'Aula', 'NN', 'disponible',2),
+(173,'N622', 6, 30, 'Aula', 'NN', 'disponible',3),
+(174,'N622', 6, 30, 'Aula', 'NN', 'disponible',4),
+(175,'N622', 6, 30, 'Aula', 'NN', 'disponible',5),
+
+(176,'N623', 6, 30, 'Aula', 'NN', 'disponible',1),
+(177,'N623', 6, 30, 'Aula', 'NN', 'disponible',2),
+(178,'N623', 6, 30, 'Aula', 'NN', 'disponible',3),
+(179,'N623', 6, 30, 'Aula', 'NN', 'disponible',4),
+(180,'N623', 6, 30, 'Aula', 'NN', 'disponible',5);

@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
         campoInput.value = campoSeleccionado;
     }
 
+    // Cargar Turno
+    const turnoInput = document.getElementById("turno");
+    const turnoSeleccionado = localStorage.getItem("turnoSeleccionado");
+
+    if (turnoSeleccionado) {
+        turnoInput.value = `Turno ${turnoSeleccionado}`;
+    }
+    
     // Cargar Docente
     const docenteInput = document.getElementById("docente");
     const docenteSeleccionado = localStorage.getItem("docenteSeleccionado");
@@ -34,5 +42,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.removeItem(targetId + "Seleccionado"); // Eliminar del localStorage
             }
         });
+        
     });
+
+    
+   
+    
 });
+   
+function volver() {
+    localStorage.clear();// Eliminar del localStorage
+    window.location.href = "menu.html";
+}

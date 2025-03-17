@@ -15,7 +15,7 @@ document.getElementById("submitBtn").addEventListener("click", function () {
     formData.append("telefono", telefono);
 
     fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/registrar_docente.php", {
-   
+   //ruta pa leo
     //fetch("archivos_php/registrar_docente.php", {
         method: "POST",
         body: formData

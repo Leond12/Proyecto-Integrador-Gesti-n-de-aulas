@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("contrasena", contrasena);
 
         fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/iniciar_sesion.php", {
-        //ruta anterior
+        //ruta pa leo
         //fetch("http://localhost/ProyectoIntegrador2/archivos_php/iniciar_sesion.php", {
             method: "POST",
             body: formData

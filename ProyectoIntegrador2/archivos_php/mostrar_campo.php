@@ -1,48 +1,42 @@
 <?php
+header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-header("Content-Type: application/json");
-
-// Conexión a la base de datos
 $servidor = "localhost";
 $usuario = "root";
 $password = "";
 $base_datos = "aulas_gestion";
 
+// Conectar a la base de datos
 $conn = new mysqli($servidor, $usuario, $password, $base_datos);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die(json_encode(["error" => "Error de conexión: " . $conn->connect_error]));
 }
 
-// Verificar si se proporcionó un ID
-if (!isset($_GET["campoId"])) {
-    echo json_encode(["error" => "No se proporcionó un ID"]);
+// Verificar si se proporcionó un ID y un turno
+if (!isset($_GET["id"]) || !isset($_GET["turno"])) {
+    echo json_encode(["error" => "No se proporcionó un ID de aula o turno"]);
     exit;
 }
 
-$id = $_GET["campoId"];
+$id = $_GET["id"];
+$turno = intval($_GET["turno"]);
 
-
-// Convertir el ID en formato compatible (eliminar guiones si existen)
-$id = str_replace("-", "", $id);
-
-// Consulta a la base de datos
-$sql = "SELECT * FROM Campo WHERE REPLACE(numero, '-', '') = REPLACE(?, '-', '')";
+// Consulta a la base de datos para obtener los detalles del aula en el turno seleccionado
+$sql = "SELECT * FROM Campo WHERE numero = ? AND id_turno = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $id);
+$stmt->bind_param("si", $id, $turno);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Verificar si se encontraron resultados
 if ($result->num_rows > 0) {
     $campo = $result->fetch_assoc();
     echo json_encode($campo);
 } else {
-    echo json_encode(["error" => "Campo no encontrado"]);
+    echo json_encode(["error" => "No se encontró el aula en este turno"]);
 }
 
 // Cerrar conexión

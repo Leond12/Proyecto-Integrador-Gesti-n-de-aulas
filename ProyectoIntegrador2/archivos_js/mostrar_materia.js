@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fetchMaterias() {
         
         fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/mostrar_materia.php")
-        //ruta ant       
+        //ruta pa leo   
         //fetch("http://localhost/ProyectoIntegrador2/archivos_php/mostrar_materia.php")
             .then(response => response.json())
             .then(data => {

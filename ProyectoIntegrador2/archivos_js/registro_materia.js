@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function cargarFacultades() {
         fetch(  "http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/obtener_facultades.php")
           
-        //ruta anterior
+        //ruta pa leo
         //fetch("http://localhost/ProyectoIntegrador2/archivos_php/obtener_facultades.php")
             .then(response => response.json())
             .then(data => {
