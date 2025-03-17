@@ -7,25 +7,28 @@
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <!-- Encabezado -->
-    <div class="menu-header d-flex justify-content-between align-items-center px-3">
-        <span class="user-info">(Usuario)</span>
-        <h1 class="text-white m-0">Menú</h1>
-        <a href="login.html" class="btn btn-light">Cerrar Sesión</a>
+    <div class="menu-header">
+        <span class="user-info"><i class="fas fa-user"></i> (Usuario)</span>
+        <h1 class="text-white">Menú</h1>
+        <a href="login.html" class="button-confirm">Cerrar Sesión</a>
     </div>
 
-    <!-- Logo -->
-    <div class="logo-container">
-        <img src="imagenes/utepsa_logo.png" alt="Logo UTEPSA" class="logo-img img-fluid">
-    </div>
-
-    <!-- Menú de opciones -->
-    <div class="container d-flex flex-column align-items-center mt-4">
-        <button onclick="window.location.href='buscador.html'" class="btn btn-danger w-100 mb-3" style="max-width: 400px;">Buscar Aula/Laboratorio/Salón</button>
-        <button onclick="window.location.href='asignar.html'" class="btn btn-danger w-100" style="max-width: 400px;">Asignar Aula/Laboratorio/Salón</button>
+    <!-- Contenedor Principal -->
+    <div class="menu-container">
+        <img src="imagenes/utepsa_logo.png" alt="Logo UTEPSA" class="main-image">
+        <div class="menu-buttons">
+            <button onclick="window.location.href='buscador.html'" class="menu-button">
+                <i class="fas fa-search"></i> Buscar Aula/Laboratorio/Salón
+            </button>
+            <button onclick="window.location.href='asignar.html'" class="menu-button">
+                <i class="fas fa-calendar-check"></i> Asignar Aula/Laboratorio/Salón
+            </button>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->

@@ -15,15 +15,44 @@ body {
     align-items: center;
     flex-direction: column;
 }
+/* Gestion de aulas */
+.main-title {
+    font-size: 40px; /* Tamaño grande */
+    font-weight: bold; /* Texto en negrita */
+    color: white; /* Color blanco para contraste */
+    text-align: center; /* Centrado */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 3px; /* Espaciado entre letras */
+    margin-top: 20px; /* Espacio desde el encabezado */
+    text-shadow: 3px 3px black; /* Efecto de sombra */
+    font-family: 'Arial Black', sans-serif; /* Fuente llamativa */
+    margin-top: 60px;
+}
+/* Imagen principal */
+.main-image {
+    max-width: 300px; 
+    width: 100%; 
+    height: 100%;
+    display: block; /* Evita espacios en línea no deseados */
+    margin: 0 auto 0 auto; /* Espacio superior reducido y centrado */
+}
+.icon-image {
+    max-width: 30px; 
+    width: 100%; 
+    height: 100%;
+}
 
 /* Encabezado */
 .header, .menu-header {
     width: 100%;
-    background: linear-gradient(90deg, #8c0d0d, #E6332A);
+    background: #A01616;
     padding: 10px;
     text-align: center;
     font-weight: bold;
     color: white;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+    
 }
 
 .menu-header {
@@ -51,16 +80,22 @@ body {
 /* Botón de volver */
 .back {
     color: white;
-    text-decoration: none;
     font-size: 16px;
     padding: 8px 12px;
     border-radius: 5px;
-    background-color: #C62828;
     transition: 0.3s;
+    width: 120px;
+    height: 40px;
+    border: 2px solid black;
+    box-shadow: 4px 4px black;
+    font-size: 17px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
 }
 
 .back:hover {
-    background-color: #A01616;
+    background-color: #7e7e7e;
 }
 
 /* Contenedores */
@@ -83,6 +118,8 @@ body {
 /* Formularios */
 .form-label {
     color: white;
+    font-size: 20px;
+    font-family:'Arial', sans-serif;
 }
 
 .form-control {
@@ -91,6 +128,94 @@ body {
     border-radius: 5px;
     border: none;
 }
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+.form {
+    padding: 20px;
+    background: #A01616;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 10px;
+    border: 3px solid black;
+    box-shadow: 5px 5px black;
+    text-align: center;
+    width: 350px;
+    margin-top: 60px;
+}
+
+.title {
+    color: white;
+    font-family: 'Arial Black', sans-serif;;
+    font-size: 27px;
+}
+
+.subtitle {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.title span {
+    color: #ddd;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.input {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: white;
+    box-shadow: 4px 4px black;
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    padding: 5px 10px;
+    outline: none;
+    text-align: left;
+}
+
+.input::placeholder {
+    color: #666;
+    opacity: 0.8;
+}
+
+.input:focus {
+    border: 2px solid #E6332A;
+}
+
+.button-confirm {
+    margin-top: 10px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: white;
+    box-shadow: 4px 4px black;
+    font-size: 17px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+
+.button-confirm:active {
+    box-shadow: 0px 0px black;
+    transform: translate(3px, 3px);
+    background-color: #7e7e7e;
+
+}
+
 
 /* Botón de guardar */
 .save-button {
