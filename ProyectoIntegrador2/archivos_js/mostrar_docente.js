@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para obtener los docentes desde el backend
     function fetchDocentes() {
         fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/mostrar_docente.php")
-        //ruta anterior
+        //ruta pa leo
         //fetch("http://localhost/ProyectoIntegrador2/archivos_php/mostrar_docente.php")
             .then(response => response.json())
             .then(data => {

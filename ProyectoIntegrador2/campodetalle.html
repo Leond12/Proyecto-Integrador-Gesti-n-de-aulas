@@ -62,10 +62,15 @@
     <script>
         document.getElementById("añadir").addEventListener("click", function () {
             const numeroCampo = document.getElementById("numero").value;
-            localStorage.setItem("campoSeleccionado", numeroCampo); // Guardar en localStorage
+            const turnoSeleccionado = localStorage.getItem("turnoSeleccionado"); // Obtener el turno previamente guardado
+    
+            localStorage.setItem("campoSeleccionado", numeroCampo); // Guardar el aula
+            localStorage.setItem("turnoSeleccionado", turnoSeleccionado); // Guardar el turno
+    
             window.location.href = "asignar.html"; // Redirigir a asignar.html
         });
     </script>
+    
     
 </body>
 </html>
