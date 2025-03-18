@@ -15,11 +15,10 @@ if ($conn->connect_error) {
     die(json_encode(["error" => "Error de conexión: " . $conn->connect_error]));
 }
 
-// Verificar si se recibieron todos los datos necesarios
+// Recibir datos
 $data = json_decode(file_get_contents("php://input"), true);
-
-if (!isset($data["campo"], $data["docente"], $data["materia"], $data["turno"], $data["usuario"], $data["fecha_inicio"], $data["fecha_final"])) {
-    echo json_encode(["error" => "Faltan datos en la solicitud"]);
+if (!$data) {
+    echo json_encode(["error" => "No se enviaron datos"]);
     exit;
 }
 
@@ -28,9 +27,9 @@ $docente = $data["docente"];
 $materia = $data["materia"];
 $turno = $data["turno"];
 $usuario = $data["usuario"];
+$descripcion = $data["descripcion"];
 $fecha_inicio = $data["fecha_inicio"];
 $fecha_final = $data["fecha_final"];
-$descripcion = isset($data["descripcion"]) ? $data["descripcion"] : "";
 
 // Obtener el ID del campo
 $sql_campo = "SELECT id FROM Campo WHERE numero = ?";
@@ -42,17 +41,41 @@ if ($result_campo->num_rows == 0) {
     echo json_encode(["error" => "El aula seleccionada no existe"]);
     exit;
 }
-$row_campo = $result_campo->fetch_assoc();
-$id_campo = $row_campo["id"];
+$id_campo = $result_campo->fetch_assoc()["id"];
+
+// Obtener el ID del docente
+$sql_docente = "SELECT id FROM Docente WHERE nombre = ?";
+$stmt_docente = $conn->prepare($sql_docente);
+$stmt_docente->bind_param("s", $docente);
+$stmt_docente->execute();
+$result_docente = $stmt_docente->get_result();
+if ($result_docente->num_rows == 0) {
+    echo json_encode(["error" => "El docente seleccionado no existe"]);
+    exit;
+}
+$id_docente = $result_docente->fetch_assoc()["id"];
+
+// Obtener el ID de la materia
+$sql_materia = "SELECT id FROM Materia WHERE nombre = ?";
+$stmt_materia = $conn->prepare($sql_materia);
+$stmt_materia->bind_param("s", $materia);
+$stmt_materia->execute();
+$result_materia = $stmt_materia->get_result();
+if ($result_materia->num_rows == 0) {
+    echo json_encode(["error" => "La materia seleccionada no existe"]);
+    exit;
+}
+$id_materia = $result_materia->fetch_assoc()["id"];
+
 
 // Insertar la asignación en la tabla `Asignado`
 $sql_insert = "INSERT INTO Asignado (id_campo, id_docente, id_materia, id_turno, id_usuario, descripcion, fecha_inicio, fecha_final) 
                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt_insert = $conn->prepare($sql_insert);
-$stmt_insert->bind_param("iiiiisss", $id_campo, $docente, $materia, $turno, $usuario, $descripcion, $fecha_inicio, $fecha_final);
+$stmt_insert->bind_param("iiiiisss", $id_campo, $id_docente, $id_materia, $turno, $usuario, $descripcion, $fecha_inicio, $fecha_final);
 
 if ($stmt_insert->execute()) {
-    // Actualizar el estado del aula a "ocupado"
+    // Marcar el aula como "ocupado"
     $sql_update = "UPDATE Campo SET estado = 'ocupado' WHERE id = ?";
     $stmt_update = $conn->prepare($sql_update);
     $stmt_update->bind_param("i", $id_campo);
@@ -64,8 +87,6 @@ if ($stmt_insert->execute()) {
 }
 
 // Cerrar conexiones
-$stmt_insert->close();
-$stmt_campo->close();
-$stmt_update->close();
+
 $conn->close();
 ?>
