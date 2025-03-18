@@ -20,7 +20,7 @@
     <!-- Contenedor de asignación -->
     <div class="container mt-5">
         <div class="assign-container mx-auto p-4 shadow rounded">
-            <form action="#" method="post">
+            <form onsubmit="return false;">
                 <!-- Aula / Laboratorio / Salón -->
                 <div class="mb-3">
                     <label class="form-label">Aula / Laboratorio / Salón</label>
@@ -57,8 +57,27 @@
                     <input type="text" class="form-control w-50" id="turno" readonly>
                 </div>
 
+                <!-- Descripción -->
+                <div class="mb-3">
+                    <label class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                </div>
+
+                <!-- Fecha de Inicio -->
+                <div class="mb-3">
+                    <label class="form-label">Fecha de Inicio</label>
+                    <input type="datetime-local" class="form-control" id="fecha_inicio">
+                </div>
+
+                <!-- Fecha de Finalización -->
+                <div class="mb-3">
+                    <label class="form-label">Fecha Final</label>
+                    <input type="datetime-local" class="form-control" id="fecha_final">
+                </div>
+
                 <!-- Botón Guardar -->
                 <button id="guardar-asignacion" class="btn btn-success">Guardar Asignación</button>
+
             </form>
         </div>
     </div>
