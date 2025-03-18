@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Redirigir solo si todo salió bien
                 setTimeout(() => {
                     console.log("➡️ Redirigiendo a menu.html");
+                    localStorage.clear();// Eliminar del localStorage
                     window.location.replace("menu.html");
                 }, 1000);
             } else {
