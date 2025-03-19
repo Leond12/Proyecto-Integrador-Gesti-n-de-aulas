@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const fechaInicio = document.getElementById("fecha_inicio").value;
         const fechaFinal = document.getElementById("fecha_final").value;
 
+        const fechaInicioFormato = fechaInicio ? new Date(fechaInicio).toISOString().split("T")[0] : "";
+        const fechaFinalFormato = fechaFinal ? new Date(fechaFinal).toISOString().split("T")[0] : "";
+
+
         console.log("📝 Valores obtenidos:", { campo, turnoTexto, docente, materia, fechaInicio, fechaFinal });
 
         // ⚠️ Validación de campos obligatorios
@@ -39,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Validar que las fechas no estén vacías
+        if (!fechaInicioFormato || !fechaFinalFormato) {
+            alert("Debe seleccionar una fecha válida.");
+            return;
+        }
+
+
         console.log("✅ Datos validados, enviando a `guardar_asignacion.php`.");
 
         const asignacionData = {
@@ -48,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
             turno: turno,
             usuario: usuario,
             descripcion: descripcion,
-            fecha_inicio: fechaInicio,
-            fecha_final: fechaFinal
+            fecha_inicio: fechaInicioFormato,
+            fecha_final: fechaFinalFormato
         };
 
         fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/guardar_asignacion.php", {

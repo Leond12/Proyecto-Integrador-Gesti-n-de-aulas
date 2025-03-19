@@ -28,8 +28,13 @@ $materia = $data["materia"];
 $turno = $data["turno"];
 $usuario = $data["usuario"];
 $descripcion = $data["descripcion"];
-$fecha_inicio = $data["fecha_inicio"];
-$fecha_final = $data["fecha_final"];
+$fecha_inicio = isset($data['fecha_inicio']) ? $data['fecha_inicio'] : null;
+$fecha_final = isset($data['fecha_final']) ? $data['fecha_final'] : null;
+
+// Convertir a formato 'YYYY-MM-DD' (evitar que se almacene con hora)
+$fecha_inicio = date('Y-m-d', strtotime($fecha_inicio));
+$fecha_final = date('Y-m-d', strtotime($fecha_final));
+
 
 // Obtener el ID del campo
 $sql_campo = "SELECT id FROM Campo WHERE numero = ?";

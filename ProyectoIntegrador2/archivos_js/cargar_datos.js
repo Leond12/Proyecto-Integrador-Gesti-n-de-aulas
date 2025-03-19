@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const turnoSeleccionado = localStorage.getItem("turnoSeleccionado");
     
     if (turnoSeleccionado) {
-        turnoInput.value = horariosTurnos[turnoSeleccionado] || "Turno no definido";
+        turnoInput.value = horariosTurnos[turnoSeleccionado] || horariosTurnos[1];
     }
     
     // Cargar Docente
