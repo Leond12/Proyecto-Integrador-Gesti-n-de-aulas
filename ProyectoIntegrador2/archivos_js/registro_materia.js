@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("nombre", nombre);
         formData.append("facultad", facultad);
 
-        fetch("http://localhost/ProyectoIntegrador2/archivos_php/registrar_materia.php", {
+        fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/registrar_materia.php", {
             method: "POST",
             body: formData
         })
@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.success) {
                 showMessage("Materia registrada correctamente.", "alert-success");
                 document.querySelector("form").reset();
+                
+                window.location.replace("materias.html");
             } else {
                 showMessage("Error: " + data.message, "alert-danger");
             }
