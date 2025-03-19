@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Asignación</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos_general/estilo.css">
+</head>
+<body>
+
+
+    <!-- Encabezado -->
+    <div class="menu-header d-flex justify-content-between align-items-center px-3">
+        <span class="user-info">(Usuario)</span>
+        <h1 class="page-title">Detalles de la Asignación</h1>
+        <a href="buscador.html" class="back btn btn-light">Volver</a>
+    </div>
+
+    <div class="container mt-4">
+        <table class="table table-bordered">
+            <tr>
+                <th>Aula/Laboratorio/Salón</th>
+                <td id="campo"></td>
+            </tr>
+            <tr>
+                <th>Docente</th>
+                <td id="docente"></td>
+            </tr>
+            <tr>
+                <th>Materia</th>
+                <td id="materia"></td>
+            </tr>
+            <tr>
+                <th>Turno</th>
+                <td id="turno"></td>
+            </tr>
+            <tr>
+                <th>Fecha de Inicio</th>
+                <td id="fecha_inicio"></td>
+            </tr>
+            <tr>
+                <th>Fecha Final</th>
+                <td id="fecha_final"></td>
+            </tr>
+        </table>     
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="archivos_js/mostrar_detalle_asignacion.js"></script>
+</body>
+</html>
