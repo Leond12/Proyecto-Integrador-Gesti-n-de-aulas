@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-     // Mapeo de turnos con sus horarios
-     const horariosTurnos = {
+    // Mapeo de turnos con sus horarios
+    const horariosTurnos = {
         "1": "7 am - 10 am",
         "2": "10 am - 1 pm",
         "3": "1 pm - 4 pm",
@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cargar Aula / Laboratorio / Salón
     const campoInput = document.getElementById("campo");
     const campoSeleccionado = localStorage.getItem("campoSeleccionado");
-
     if (campoSeleccionado) {
         campoInput.value = campoSeleccionado;
     }
@@ -19,46 +18,45 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cargar Turno con franja horaria
     const turnoInput = document.getElementById("turno");
     const turnoSeleccionado = localStorage.getItem("turnoSeleccionado");
-    
     if (turnoSeleccionado) {
         turnoInput.value = horariosTurnos[turnoSeleccionado] || horariosTurnos[1];
     }
-    
+
     // Cargar Docente
     const docenteInput = document.getElementById("docente");
     const docenteSeleccionado = localStorage.getItem("docenteSeleccionado");
-    
     if (docenteSeleccionado) {
         docenteInput.value = docenteSeleccionado;
     }
-    
+
     // Cargar Materia
     const materiaInput = document.getElementById("materia");
     const materiaSeleccionada = localStorage.getItem("materiaSeleccionada");
-    
     if (materiaSeleccionada) {
         materiaInput.value = materiaSeleccionada;
     }
+
     // Funcionalidad de los botones "X" para limpiar inputs
     document.querySelectorAll(".clear-input").forEach(button => {
         button.addEventListener("click", function () {
             let targetId = this.getAttribute("data-target");
             let inputField = document.getElementById(targetId);
-
             if (inputField) {
                 inputField.value = ""; // Limpiar el input
                 localStorage.removeItem(targetId + "Seleccionado"); // Eliminar del localStorage
             }
         });
-        
     });
 
-    
-   
-    
+    // **🚀 Detectar si es una nueva sesión (cerró y volvió a abrir el navegador) 🚀**
+    if (!sessionStorage.getItem("sesionActiva")) {
+        localStorage.clear(); // Limpiar localStorage al abrir una nueva sesión
+        sessionStorage.setItem("sesionActiva", "true"); // Marcar que la sesión está activa
+    }
 });
-   
+
+// Función para limpiar `localStorage` y volver al menú
 function volver() {
-    localStorage.clear();// Eliminar del localStorage
+    localStorage.clear(); // Eliminar toda la información almacenada
     window.location.href = "menu.html";
 }
