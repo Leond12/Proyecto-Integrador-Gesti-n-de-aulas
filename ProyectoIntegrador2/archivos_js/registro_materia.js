@@ -63,8 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.success) {
                 showMessage("Materia registrada correctamente.", "alert-success");
                 document.querySelector("form").reset();
-                
+                setTimeout(() => {
                 window.location.replace("materias.html");
+                }, 2000);
             } else {
                 showMessage("Error: " + data.message, "alert-danger");
             }
