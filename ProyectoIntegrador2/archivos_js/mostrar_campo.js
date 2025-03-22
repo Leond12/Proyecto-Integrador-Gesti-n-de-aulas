@@ -26,8 +26,4 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("estado").value = data.estado || "";
             document.getElementById("turno").value = `Turno ${turnoSeleccionado}`;
         })
-        /*.catch(error => {
-            console.error("Error:", error);
-            alert("Hubo un problema al cargar los datos del aula.");
-        });*/
 });

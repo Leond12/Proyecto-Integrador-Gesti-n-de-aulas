@@ -62,14 +62,22 @@
     <script>
         document.getElementById("añadir").addEventListener("click", function () {
             const numeroCampo = document.getElementById("numero").value;
-            const turnoSeleccionado = localStorage.getItem("turnoSeleccionado"); // Obtener el turno previamente guardado
+            const estadoCampo = document.getElementById("estado").value.trim().toLowerCase(); // Leer y normalizar estado
+            const turnoSeleccionado = localStorage.getItem("turnoSeleccionado");
     
-            localStorage.setItem("campoSeleccionado", numeroCampo); // Guardar el aula
-            localStorage.setItem("turnoSeleccionado", turnoSeleccionado); // Guardar el turno
+            if (estadoCampo === "ocupado") {
+                alert("⚠️ Este campo ya está ocupado. Selecciona otro disponible.");
+                return; // No redirige
+            }
     
-            window.location.href = "asignar.html"; // Redirigir a asignar.html
+            // Guardar el campo y turno en localStorage
+            localStorage.setItem("campoSeleccionado", numeroCampo);
+            localStorage.setItem("turnoSeleccionado", turnoSeleccionado);
+    
+            window.location.href = "asignar.html";
         });
     </script>
+    
     
     
 </body>

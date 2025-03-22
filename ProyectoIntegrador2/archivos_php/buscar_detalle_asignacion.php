@@ -29,7 +29,8 @@ $sql = "SELECT
             m.nombre AS materia, 
             t.nombre AS turno,
             a.fecha_inicio, 
-            a.fecha_final
+            a.fecha_final,
+            a.descripcion  -- ✅ Ahora incluye la descripción
         FROM Asignado a
         INNER JOIN Campo c ON a.id_campo = c.id
         INNER JOIN Docente d ON a.id_docente = d.id
@@ -47,6 +48,7 @@ if ($result->num_rows > 0) {
 } else {
     echo json_encode(["error" => "Asignación no encontrada"]);
 }
+
 
 $conn->close();
 ?>

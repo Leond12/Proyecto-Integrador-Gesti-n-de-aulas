@@ -43,10 +43,54 @@
                 <th>Fecha Final</th>
                 <td id="fecha_final"></td>
             </tr>
-        </table>     
+            <tr>
+                <th>Descripción</th>
+                <td id="descripcion"></td>
+            </tr>
+        </table>   
+        <!-- ✅ Botones en la esquina inferior derecha -->
+        <div class="botones-container">
+            <button id="editar" class="btn editar">Editar Asignación</button>
+            <button id="btnImprimir" class="btn imprimir">Imprimir Detalles Asignacion</button>
+            <button id="eliminar" class="btn eliminar">Eliminar Asignación</button>
+        </div>  
     </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="archivos_js/mostrar_detalle_asignacion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="archivos_js/imprimir_formulario.js"></script>
+
 </body>
 </html>
+<style>
+    /* ✅ Estilos para los botones en la esquina inferior derecha */
+    .botones-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+    }
+    .btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    /* Mantener el color de las letras en blanco al pasar el mouse */
+    .btn:hover {
+        background-color: inherit; 
+        color: white !important; 
+    }
+    .editar:hover { background-color: #358239; }  /* Verde más oscuro */
+    .eliminar:hover { background-color: #d32f2f; } /* Rojo más oscuro */
+    .btnImprimir:hover { background-color: #036694; }   /* Azul más oscuro */
+
+
+    .editar { background-color: #4CAF50; color: white; }  /* Botón verde */
+    .eliminar { background-color: #f44336; color: white; } /* Botón rojo */
+    .btnImprimir { background-color: #008CBA; color: white; }   /* Botón azul */
+</style>

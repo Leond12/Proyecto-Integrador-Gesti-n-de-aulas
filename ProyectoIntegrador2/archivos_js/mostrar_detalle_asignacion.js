@@ -27,9 +27,43 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("turno").textContent = data.turno || "No disponible";
             document.getElementById("fecha_inicio").textContent = data.fecha_inicio || "No disponible";
             document.getElementById("fecha_final").textContent = data.fecha_final || "No disponible";
+            document.getElementById("descripcion").textContent = data.descripcion || "No disponible"; // ✅ Ahora muestra la descripción
         })
         .catch(error => {
             console.error("⚠️ Error al obtener los detalles:", error);
             alert("Error al obtener los detalles.");
         });
+
+    // ✅ Agregar funcionalidad a los botones
+    document.getElementById("editar").addEventListener("click", function () {
+        alert("Función de edición en desarrollo.");
+        // Aquí puedes redirigir a una página de edición si es necesario
+    });
+
+    document.getElementById("eliminar").addEventListener("click", function () {
+        if (!confirm("¿Estás seguro de eliminar esta asignación?")) return;
+
+        fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/eliminar_asignacion.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: idAsignacion })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Asignación eliminada correctamente.");
+                window.location.href = "buscador.html"; // Redirigir al buscador
+            } else {
+                alert("Error: " + data.error);
+            }
+        })
+        .catch(error => {
+            console.error("Error al eliminar:", error);
+            alert("Ocurrió un error al eliminar la asignación.");
+        });
+    });
+
+    document.getElementById("volver").addEventListener("click", function () {
+        window.location.href = "buscador.html";
+    });
 });

@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                     console.log("➡️ Redirigiendo a menu.html");
                     localStorage.clear();// Eliminar del localStorage
-                    window.location.replace("menu.html");
+                    window.location.href = "confirmacion.html";
                 }, 1000);
             } else {
                 console.error("❌ Error del servidor:", data.error);
