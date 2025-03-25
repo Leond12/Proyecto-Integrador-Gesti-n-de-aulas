@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const imprimirBtn = document.getElementById("btnImprimir");
+    const imprimirBtn = document.getElementById("imprimir");
 
     if (imprimirBtn) {
         imprimirBtn.addEventListener("click", function () {
