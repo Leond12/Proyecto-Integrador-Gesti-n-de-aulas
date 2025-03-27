@@ -250,6 +250,11 @@ body {
     background: #E6332A;
 }
 
+.btn-imprimir {
+    background-color: #28a745;
+    color: white;
+}
+
 /* Tablas */
 .table-container {
     width: 90%;

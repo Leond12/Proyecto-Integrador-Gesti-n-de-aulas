@@ -34,11 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Error al obtener los detalles.");
         });
 
-    // ✅ Agregar funcionalidad a los botones
-    document.getElementById("editar").addEventListener("click", function () {
-        alert("Función de edición en desarrollo.");
-        // Aquí puedes redirigir a una página de edición si es necesario
-    });
 
     document.getElementById("eliminar").addEventListener("click", function () {
         if (!confirm("¿Estás seguro de eliminar esta asignación?")) return;
@@ -63,7 +58,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    document.getElementById("volver").addEventListener("click", function () {
-        window.location.href = "buscador.html";
-    });
+    
 });

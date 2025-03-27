@@ -77,13 +77,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (data.success) {
                 alert(data.success);
+            
+                // ✅ Guardar datos en localStorage para imprimir
+                const datosAsignacion = {
+                    docente: docente,
+                    materia: materia,
+                    campo: campo,
+                    turno: turnoTexto, // Este es el texto del turno visible
+                    fecha_inicio: fechaInicioFormato,
+                    fecha_final: fechaFinalFormato,
+                    descripcion: descripcion
+                };
+                localStorage.setItem("asignacionReciente", JSON.stringify(datosAsignacion));
+            
+                // Ocultar botones de buscar y limpiar
+                document.querySelectorAll("button.btn-danger").forEach(btn => btn.style.display = "none");
+                document.querySelectorAll("button.btn-outline-secondary").forEach(btn => btn.style.display = "none");
+            
+                // Ocultar el botón de guardar
+                guardarBtn.style.display = "none";
+            
+                // Crear contenedor para los botones si no existe
+                let accionesDiv = document.getElementById("acciones-finales");
+                if (!accionesDiv) {
+                    accionesDiv = document.createElement("div");
+                    accionesDiv.id = "acciones-finales";
+                    accionesDiv.style.marginTop = "20px";
+                    accionesDiv.style.display = "flex";
+                    accionesDiv.style.gap = "10px";
+                    accionesDiv.style.justifyContent = "center";
+                    guardarBtn.parentNode.appendChild(accionesDiv);
+                }
+            
+                // Botón "Volver al Menú"
+                const volverBtn = document.createElement("button");
+                volverBtn.textContent = "Volver al Menú";
+                volverBtn.className = "btn btn-primary";
+                volverBtn.onclick = function () {
+                    localStorage.clear();
+                    window.location.href = "menu.html";
+                };
+            
+                // Botón "Imprimir"
+                const imprimirBtn = document.createElement("button");
+                imprimirBtn.textContent = "Imprimir";
+                imprimirBtn.className = "btn btn-imprimir";
+                imprimirBtn.id = "imprimir";
+                imprimirBtn.onclick = function () {
+                    const datos = JSON.parse(localStorage.getItem("asignacionReciente"));
+                    if (datos) {
+                        generarPDF(datos);
+                    } else {
+                        alert("No hay datos para imprimir.");
+                    }
+                };
+            
+                accionesDiv.appendChild(imprimirBtn);
+                accionesDiv.appendChild(volverBtn);            
 
-                // Redirigir solo si todo salió bien
-                setTimeout(() => {
-                    console.log("➡️ Redirigiendo a menu.html");
-                    localStorage.clear();// Eliminar del localStorage
-                    window.location.href = "confirmacion.html";
-                }, 1000);
             } else {
                 console.error("❌ Error del servidor:", data.error);
                 alert(data.error);
