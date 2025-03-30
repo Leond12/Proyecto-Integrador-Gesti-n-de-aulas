@@ -77,7 +77,15 @@
             window.location.href = "asignar.html";
         });
     </script>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nombre = localStorage.getItem("usuarioNombre");
+            if (nombre) {
+                const userSpans = document.querySelectorAll(".user-info");
+                userSpans.forEach(span => span.textContent = `👤 ${nombre}`);
+            }
+        });
+    </script>
     
     
 </body>

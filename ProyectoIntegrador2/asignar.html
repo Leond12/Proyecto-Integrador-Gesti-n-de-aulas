@@ -25,7 +25,7 @@
                 <div class="mb-3">
                     <label class="form-label">Aula / Laboratorio / Salón</label>
                     <div class="input-group">
-                        <input type="text" class="form-control input w-50" id="campo" readonly>
+                        <input type="text" class="form-control input w-50" id="campo" placeholder="Presione click en Buscar" readonly>
                         <button type="button" class="btn btn-outline-secondary clear-input" data-target="campo">✖</button>
                         <button type="button" class="btn btn-danger" onclick="window.location.href='campos.html'">Buscar</button>
                     </div>
@@ -35,7 +35,7 @@
                 <div class="mb-3">
                     <label class="form-label">Docente</label>
                     <div class="input-group">
-                        <input type="text" class="form-control input w-50" id="docente" readonly>
+                        <input type="text" class="form-control input w-50" id="docente" placeholder="Presione click en Buscar" readonly>
                         <button type="button" class="btn btn-outline-secondary clear-input" data-target="docente">✖</button>
                         <button type="button" class="btn btn-danger" onclick="window.location.href='docentes.html'">Buscar</button>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="mb-3">
                     <label class="form-label">Materia</label>
                     <div class="input-group">
-                        <input type="text" class="form-control input w-50" id="materia" readonly>
+                        <input type="text" class="form-control input w-50" id="materia" placeholder="Presione click en Buscar" readonly>
                         <button type="button" class="btn btn-outline-secondary clear-input" data-target="docente">✖</button>
                         <button type="button" class="btn btn-danger" onclick="window.location.href='materias.html'">Buscar</button>
                     </div>
@@ -54,13 +54,19 @@
                 <!-- Turno -->
                 <div class="mb-3">
                     <label class="form-label">Turno</label>
-                    <input type="text" class="form-control input w-50" id="turno" readonly>
+                    <input type="text" class="form-control input w-50" id="turno" placeholder="Se seleccionara automaticamente luego de buscar Campo" readonly>
+                </div>
+
+                <!-- Requerimientos -->
+                <div class="mb-3">
+                    <label for="requerimientos" class="form-label">Requerimientos</label>
+                    <textarea class="form-control" id="requerimientos" rows="2" placeholder="Ingrese requerimientos necesarios..."></textarea>
                 </div>
 
                 <!-- Descripción -->
                 <div class="mb-3">
                     <label class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                    <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese una descripcion de la asignatura..."></textarea>
                 </div>
 
                 <!-- Fecha de Inicio -->
@@ -75,8 +81,43 @@
                     <input type="date" class="form-control input w-50" id="fecha_final">
                 </div>
 
+                <!-- Dias -->
+                <div class="mb-3">
+                    <label class="form-label">Días de la semana</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia1" value="1">
+                        <label class="form-check-label" for="dia1">Lunes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia2" value="2">
+                        <label class="form-check-label" for="dia2">Martes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia3" value="3">
+                        <label class="form-check-label" for="dia3">Miércoles</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia4" value="4">
+                        <label class="form-check-label" for="dia4">Jueves</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia5" value="5">
+                        <label class="form-check-label" for="dia5">Viernes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia6" value="6">
+                        <label class="form-check-label" for="dia6">Sábado</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dia7" value="7">
+                        <label class="form-check-label" for="dia7">Domingo</label>
+                    </div>
+                </div>
+                
+
                 <!-- Botón Guardar -->
                 <button id="guardar-asignacion" class="save-button btn-success">Guardar Asignación</button>
+
 
 
             </form>
@@ -89,6 +130,15 @@
     <script src="archivos_js/guardar_asignacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="archivos_js/imprimir_formulario.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nombre = localStorage.getItem("usuarioNombre");
+            if (nombre) {
+                const userSpans = document.querySelectorAll(".user-info");
+                userSpans.forEach(span => span.textContent = `👤 ${nombre}`);
+            }
+        });
+    </script>
     
 </body>
 </html>

@@ -4,7 +4,6 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-
 $servidor = "localhost";
 $usuario = "root";
 $password = "";
@@ -30,7 +29,9 @@ $sql = "SELECT
             t.nombre AS turno,
             a.fecha_inicio, 
             a.fecha_final,
-            a.descripcion  -- ✅ Ahora incluye la descripción
+            a.descripcion,
+            a.requerimientos,
+            a.dias -- ✅ Ahora incluye la descripción
         FROM Asignado a
         INNER JOIN Campo c ON a.id_campo = c.id
         INNER JOIN Docente d ON a.id_docente = d.id
@@ -44,7 +45,31 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    echo json_encode($result->fetch_assoc());
+    $row = $result->fetch_assoc();
+
+    // 🟦 Traducir IDs de días a texto
+    if (!empty($row["dias"])) {
+        $dias_ids = explode(",", $row["dias"]);
+        $mapa_dias = [
+            "1" => "Lunes",
+            "2" => "Martes",
+            "3" => "Miércoles",
+            "4" => "Jueves",
+            "5" => "Viernes",
+            "6" => "Sábado",
+            "7" => "Domingo"
+        ];
+
+        $dias_nombres = array_map(function($id) use ($mapa_dias) {
+            return $mapa_dias[trim($id)] ?? "Desconocido";
+        }, $dias_ids);
+
+        $row["dias"] = implode(", ", $dias_nombres);
+    } else {
+        $row["dias"] = "No especificado";
+    }
+
+    echo json_encode($row);
 } else {
     echo json_encode(["error" => "Asignación no encontrada"]);
 }

@@ -18,17 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("contrasena", contrasena);
 
         fetch("http://localhost/Proyecto-Integrador-Gesti-n-de-aulas/ProyectoIntegrador2/archivos_php/iniciar_sesion.php", {
-        //ruta pa leo
-        //fetch("http://localhost/ProyectoIntegrador2/archivos_php/iniciar_sesion.php", {
             method: "POST",
             body: formData
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                sessionStorage.setItem("usuario", data.usuario);
+                localStorage.setItem("usuarioNombre", data.nombre); // ← Aquí guarda el nombre real
+
+                sessionStorage.setItem("usuario", data.nombre);
                 sessionStorage.setItem("rol", data.rol);
+
                 window.location.href = "menu.html"; // Redirige al menú principal
+
             } else {
                 showMessage("Error: " + data.message, "alert-danger");
             }

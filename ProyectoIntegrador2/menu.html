@@ -33,5 +33,15 @@
 
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nombre = localStorage.getItem("usuarioNombre");
+            if (nombre) {
+                const userSpans = document.querySelectorAll(".user-info");
+                userSpans.forEach(span => span.textContent = `👤 ${nombre}`);
+            }
+        });
+    </script>
+        
 </body>
 </html>

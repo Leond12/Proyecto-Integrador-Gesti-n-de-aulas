@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("fecha_inicio").textContent = data.fecha_inicio || "No disponible";
             document.getElementById("fecha_final").textContent = data.fecha_final || "No disponible";
             document.getElementById("descripcion").textContent = data.descripcion || "No disponible"; // ✅ Ahora muestra la descripción
+            document.getElementById("requerimientos").textContent = data.requerimientos || "No disponible";
+            document.getElementById("dias").textContent = data.dias || "No disponible";
+
         })
         .catch(error => {
             console.error("⚠️ Error al obtener los detalles:", error);

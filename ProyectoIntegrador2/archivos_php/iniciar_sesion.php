@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             
             // Comparar la contraseña (asumiendo que está en texto plano, pero debería estar encriptada con password_hash)
-            if ($contrasena === $row["contraseña"]) { 
-                echo json_encode(["success" => true, "usuario" => $row["usuario"], "rol" => $row["rol"]]);
+            if ($contrasena === $row["contraseña"]) {
+                echo json_encode(["success" => true, "nombre" => $row["usuario"], "rol" => $row["rol"]]);
             } else {
                 echo json_encode(["success" => false, "message" => "Contraseña incorrecta."]);
             }

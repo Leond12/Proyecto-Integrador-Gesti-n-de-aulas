@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (imprimirBtn) {
         imprimirBtn.addEventListener("click", function () {
-            // Detectar si estamos en confirmacion.html o detalle_asignacion.html
-            if (window.location.pathname.includes("confirmacion.html")) {
-                // Obtener datos desde localStorage
+            // Detectar si estamos en asignar.html
+            if (window.location.pathname.includes("asignar.html")) {
                 const datos = {
                     docente: localStorage.getItem("docenteSeleccionado") || "Desconocido",
                     materia: localStorage.getItem("materiaSeleccionada") || "Desconocida",
@@ -13,11 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     turno: localStorage.getItem("turnoSeleccionado") || "Desconocido",
                     fecha_inicio: localStorage.getItem("fechaInicio") || "N/A",
                     fecha_final: localStorage.getItem("fechaFinal") || "N/A",
-                    descripcion: localStorage.getItem("descripcionAsignacion") || ""
+                    descripcion: localStorage.getItem("descripcionAsignacion") || "",
+                    requerimientos: localStorage.getItem("requerimientosAsignacion") || "",
+                    dias: localStorage.getItem("diasSeleccionados") || ""
                 };
                 generarPDF(datos);
             } else {
-                // Obtener datos desde el DOM en detalle_asignacion.html
                 const datos = {
                     docente: document.getElementById("docente")?.textContent || "Desconocido",
                     materia: document.getElementById("materia")?.textContent || "Desconocida",
@@ -25,12 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     turno: document.getElementById("turno")?.textContent || "Desconocido",
                     fecha_inicio: document.getElementById("fecha_inicio")?.textContent || "N/A",
                     fecha_final: document.getElementById("fecha_final")?.textContent || "N/A",
-                    descripcion: document.getElementById("descripcion")?.textContent || ""
+                    descripcion: document.getElementById("descripcion")?.textContent || "",
+                    requerimientos: document.getElementById("requerimientos")?.textContent || "",
+                    dias: document.getElementById("dias")?.textContent || ""
                 };
                 generarPDF(datos);
             }
         });
     }
+    
 });
 
 function generarPDF(datos) {
@@ -52,7 +55,6 @@ function generarPDF(datos) {
     doc.setFontSize(10);
     doc.text("LABORATORIO DE SISTEMAS, REDES Y TELECOMUNICACIONES", 50, 20);
 
-
     doc.setFont("helvetica", "bold");
     doc.setFontSize(14);
     doc.text("ASIGNACIÓN DE AULA / LABORATORIO", 60, 30);
@@ -60,21 +62,27 @@ function generarPDF(datos) {
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
 
+
+    // Contenido
     doc.text(`DOCENTE: ${datos.docente}`, 20, 48);
     doc.text(`MATERIA: ${datos.materia}`, 20, 56);
     doc.text(`AULA: ${datos.campo}`, 20, 64);
     doc.text(`TURNO: ${datos.turno}`, 20, 72);
     doc.text(`FECHA DE INICIO: ${datos.fecha_inicio}`, 20, 80);
     doc.text(`FECHA FINAL: ${datos.fecha_final}`, 20, 88);
-    doc.text("DESCRIPCIÓN:", 20, 96);
-    doc.text(datos.descripcion, 20, 104, { maxWidth: 170 });
+    doc.text(`DÍAS: ${datos.dias}`, 20, 96);
+    doc.text("REQUERIMIENTOS:", 20, 104);
+    doc.text(datos.requerimientos || "Ninguno", 20, 110, { maxWidth: 170 });
+    doc.text("DESCRIPCIÓN:", 20, 118);
+    doc.text(datos.descripcion || "Sin descripción", 20, 124, { maxWidth: 170 });
 
-    doc.line(20, 120, 90, 120);
-    doc.line(120, 120, 190, 120);
-    doc.text("FIRMA DOCENTE", 40, 130);
-    doc.text("FIRMA COORDINACIÓN", 140, 130);
+    // Líneas de firma
+    doc.line(20, 140, 90, 140);
+    doc.line(120, 140, 190, 140);
+    doc.text("FIRMA DOCENTE", 40, 148);
+    doc.text("FIRMA COORDINACIÓN", 140, 148);
 
-    // Abrir ventana para imprimir
+    // Imprimir
     doc.autoPrint();
     window.open(doc.output("bloburl"), "_blank");
 }

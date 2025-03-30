@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const docente = document.getElementById("docente").value;
         const materia = document.getElementById("materia").value;
         const usuario = localStorage.getItem("usuarioId") || "1";
+        const requerimientos = document.getElementById("requerimientos").value || "";
         const descripcion = document.getElementById("descripcion").value || "";
         const fechaInicio = document.getElementById("fecha_inicio").value;
         const fechaFinal = document.getElementById("fecha_final").value;
@@ -18,22 +19,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const fechaInicioFormato = fechaInicio ? new Date(fechaInicio).toISOString().split("T")[0] : "";
         const fechaFinalFormato = fechaFinal ? new Date(fechaFinal).toISOString().split("T")[0] : "";
 
+        const checkboxesDias = document.querySelectorAll("input[type='checkbox'][id^='dia']");
+        const diasSeleccionados = Array.from(checkboxesDias)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value)
+            .join(","); // Ej: "1,3,5"
+
+
 
         console.log("📝 Valores obtenidos:", { campo, turnoTexto, docente, materia, fechaInicio, fechaFinal });
 
         // ⚠️ Validación de campos obligatorios
-        if (!campo || !turnoTexto || !docente || !materia || !fechaInicio || !fechaFinal) {
+        if (!campo || !turnoTexto || !docente || !materia || !fechaInicio || !fechaFinal|| !requerimientos) {
             console.error("❌ Faltan campos obligatorios.");
             alert("Todos los campos son obligatorios.");
             return;
         }
 
         const turnosMap = {
-            "7 am - 10 am": 1,
-            "10 am - 1 pm": 2,
-            "1 pm - 4 pm": 3,
-            "4 pm - 7 pm": 4,
-            "7 pm - 10 pm": 5
+            "Mañana 7-10": 1,
+            "Mañana 10-13": 2,
+            "Tarde 13-16": 3,
+            "Tarde 16-19": 4,
+            "Noche 19-22": 5
         };
 
         const turno = turnosMap[turnoTexto] || null;
@@ -59,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
             turno: turno,
             usuario: usuario,
             descripcion: descripcion,
+            requerimientos: requerimientos,
+            dias: diasSeleccionados,
             fecha_inicio: fechaInicioFormato,
             fecha_final: fechaFinalFormato
         };
@@ -85,7 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     campo: campo,
                     turno: turnoTexto, // Este es el texto del turno visible
                     fecha_inicio: fechaInicioFormato,
+                    requerimientos: requerimientos,
                     fecha_final: fechaFinalFormato,
+                    dias: diasSeleccionados,
                     descripcion: descripcion
                 };
                 localStorage.setItem("asignacionReciente", JSON.stringify(datosAsignacion));

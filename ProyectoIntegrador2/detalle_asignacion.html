@@ -9,6 +9,27 @@
 </head>
 <body>
 
+    <style>
+         .btn-imprimir {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        }
+        .btn-imprimir:hover {
+            background-color: #218838;
+            color: white;
+        }
+
+        .btn-eliminar {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+        .btn-eliminar:hover {
+            background-color: #c82333;
+            color: white;
+        }
+    </style>
 
     <!-- Encabezado -->
     <div class="menu-header d-flex justify-content-between align-items-center px-3">
@@ -47,11 +68,20 @@
                 <th>Descripción</th>
                 <td id="descripcion"></td>
             </tr>
+            <tr>
+                <th>Requerimientos</th>
+                <td id="requerimientos"></td>
+            </tr>
+            <tr>
+                <th>Dias</th>
+                <td id="dias"></td>
+            </tr>
+
         </table>   
         <!-- ✅ Botones en la esquina inferior derecha -->
         <div class="botones-container">
-            <button id="imprimir" class="btn imprimir">Imprimir Detalles Asignacion</button>
-            <button id="eliminar" class="btn eliminar">Eliminar Asignación</button>
+            <button id="imprimir" class="btn btn-imprimir">🖨 Imprimir Detalles Asignacion</button>
+            <button id="eliminar" class="btn btn-eliminar">🗑 Eliminar Asignación</button>
         </div>  
     </div>
 
@@ -59,6 +89,15 @@
     <script src="archivos_js/mostrar_detalle_asignacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="archivos_js/imprimir_formulario.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nombre = localStorage.getItem("usuarioNombre");
+            if (nombre) {
+                const userSpans = document.querySelectorAll(".user-info");
+                userSpans.forEach(span => span.textContent = `👤 ${nombre}`);
+            }
+        });
+    </script>
 
 </body>
 </html>
