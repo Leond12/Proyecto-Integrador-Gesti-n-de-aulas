@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 25-03-2025 a las 15:24:41
+-- Tiempo de generación: 30-03-2025 a las 16:48:29
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -34,26 +34,29 @@ CREATE TABLE IF NOT EXISTS `asignado` (
   `id_docente` int NOT NULL,
   `id_materia` int NOT NULL,
   `id_turno` int NOT NULL,
-  `descripcion` text,
-  `fecha_inicio` datetime DEFAULT NULL,
-  `fecha_final` datetime DEFAULT NULL,
   `id_usuario` int NOT NULL,
+  `descripcion` text,
+  `requerimientos` text,
+  `dias` varchar(50) DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_final` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_campo` (`id_campo`),
   KEY `id_docente` (`id_docente`),
   KEY `id_materia` (`id_materia`),
   KEY `id_turno` (`id_turno`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `asignado`
 --
 
-INSERT INTO `asignado` (`id`, `id_campo`, `id_docente`, `id_materia`, `id_turno`, `descripcion`, `fecha_inicio`, `fecha_final`, `id_usuario`) VALUES
-(19, 6, 1, 6, 1, 'adadada', '2025-03-07 00:00:00', '2025-03-25 00:00:00', 1),
-(18, 1, 2, 5, 3, 'aja pe aja', '2025-03-21 00:00:00', '2025-03-30 00:00:00', 1),
-(17, 1, 1, 4, 1, 'onda onda onda ola', '2025-03-21 00:00:00', '2025-03-22 00:00:00', 1);
+INSERT INTO `asignado` (`id`, `id_campo`, `id_docente`, `id_materia`, `id_turno`, `id_usuario`, `descripcion`, `requerimientos`, `dias`, `fecha_inicio`, `fecha_final`) VALUES
+(1, 1, 2, 3, 1, 1, 'Asignación de laboratorio para prácticas de redes.', 'Se requiere proyector y acceso a internet.', '1,3,5', '2024-04-01', '2024-06-30'),
+(2, 1, 1, 4, 1, 1, 'oo', NULL, NULL, '2025-03-28', '2025-03-29'),
+(3, 6, 3, 5, 1, 1, 'nariz', NULL, NULL, '2025-03-28', '2025-03-30'),
+(4, 16, 0, 0, 1, 1, 'qqqq', 'qqqq', '1,2,3,4', '2025-03-28', '2025-03-30');
 
 -- --------------------------------------------------------
 
@@ -95,7 +98,7 @@ INSERT INTO `campo` (`id`, `numero`, `piso`, `capacidad`, `tipo`, `descripcion`,
 (13, 'N211', 2, 30, 'Laboratorio', 'NN', 'disponible', 3),
 (14, 'N211', 2, 30, 'Laboratorio', 'NN', 'disponible', 4),
 (15, 'N211', 2, 30, 'Laboratorio', 'NN', 'disponible', 5),
-(16, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 1),
+(16, 'N212', 2, 30, 'Otro', 'NN', 'ocupado', 1),
 (17, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 2),
 (18, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 3),
 (19, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 4),
@@ -264,6 +267,31 @@ INSERT INTO `campo` (`id`, `numero`, `piso`, `capacidad`, `tipo`, `descripcion`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `dias`
+--
+
+DROP TABLE IF EXISTS `dias`;
+CREATE TABLE IF NOT EXISTS `dias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `dia` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `dias`
+--
+
+INSERT INTO `dias` (`id`, `dia`) VALUES
+(1, 'Lunes'),
+(2, 'Martes'),
+(3, 'Miércoles'),
+(4, 'Jueves'),
+(5, 'Viernes'),
+(6, 'Sábado');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `docente`
 --
 
@@ -275,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
   `telefono` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ci` (`ci`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `docente`
@@ -283,7 +311,8 @@ CREATE TABLE IF NOT EXISTS `docente` (
 
 INSERT INTO `docente` (`id`, `ci`, `nombre`, `telefono`) VALUES
 (1, 'a', 'a', 'a'),
-(2, 'b', 'b', 'b');
+(2, 'b', 'b', 'b'),
+(3, '123', 'alan', '12345678');
 
 -- --------------------------------------------------------
 
@@ -382,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `turno` (
 INSERT INTO `turno` (`id`, `nombre`, `hora_inicio`, `hora_final`) VALUES
 (5, 'Noche 19-22', '19:15:00', '22:15:00'),
 (4, 'Tarde 16-19', '16:15:00', '19:15:00'),
-(3, 'Mañana 13-16', '13:15:00', '16:15:00'),
+(3, 'Tarde 13-16', '13:15:00', '16:15:00'),
 (2, 'Mañana 10-13', '10:15:00', '13:15:00'),
 (1, 'Mañana 7-10', '07:15:00', '10:15:00');
 
