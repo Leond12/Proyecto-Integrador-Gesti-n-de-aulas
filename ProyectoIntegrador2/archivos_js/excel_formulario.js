@@ -39,6 +39,25 @@ document.addEventListener("DOMContentLoaded", function () {
 function exportarExcel(datos) {
     const wb = XLSX.utils.book_new();
 
+     // ✅ Convertir días si vienen como números
+     const diasMap = {
+        1: "Lunes",
+        2: "Martes",
+        3: "Miércoles",
+        4: "Jueves",
+        5: "Viernes",
+        6: "Sábado"
+    };
+
+    let diasTexto = datos.dias;
+    if (/^\d+(,\d+)*$/.test(diasTexto)) {
+        diasTexto = diasTexto
+            .split(",")
+            .map(n => diasMap[parseInt(n.trim())] || "")
+            .filter(Boolean)
+            .join(", ");
+    }
+
     const datosAsignacion = [
         ["Docente", datos.docente],
         ["Materia", datos.materia],
@@ -46,7 +65,7 @@ function exportarExcel(datos) {
         ["Turno", datos.turno],
         ["Fecha de Inicio", datos.fecha_inicio],
         ["Fecha Final", datos.fecha_final],
-        ["Días", datos.dias],
+        ["Días", diasTexto],
         ["Requerimientos", datos.requerimientos],
         ["Descripción", datos.descripcion]
     ];
