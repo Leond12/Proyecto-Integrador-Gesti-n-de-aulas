@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("📝 Valores obtenidos:", { campo, turnoTexto, docente, materia, fechaInicio, fechaFinal });
 
         // ⚠️ Validación de campos obligatorios
-        if (!campo || !turnoTexto || !docente || !materia || !fechaInicio || !fechaFinal|| !requerimientos) {
+        if (!campo || !turnoTexto || !docente || !materia || !fechaInicio || !fechaFinal|| !requerimientos || !diasSeleccionados) {
             console.error("❌ Faltan campos obligatorios.");
             alert("Todos los campos son obligatorios.");
             return;
