@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Validar campos obligatorios
-$campos_requeridos = ["campo", "docente", "materia", "turno", "usuario", "descripcion", "fecha_inicio", "fecha_final"];
+$campos_requeridos = ["campo", "docente", "materia", "turno", "usuario", "descripcion", "fecha_inicio", "fecha_final","requerimientos","dias"];
 foreach ($campos_requeridos as $campo) {
     if (!isset($data[$campo]) || empty($data[$campo])) {
         echo json_encode(["error" => "El campo '$campo' es obligatorio."]);
@@ -30,8 +30,8 @@ foreach ($campos_requeridos as $campo) {
 
 // Recolectar datos
 $numero_campo = $data["campo"];
-$id_docente = $data["docente"];
-$id_materia = $data["materia"];
+$nombre_docente = $data["docente"];
+$nombre_materia = $data["materia"];
 $id_turno = $data["turno"];
 $id_usuario = $data["usuario"];
 $descripcion = $data["descripcion"];
@@ -51,6 +51,31 @@ if ($resultCampo->num_rows === 0) {
 }
 $id_campo = $resultCampo->fetch_assoc()["id"];
 $stmtCampo->close();
+
+
+// Buscar ID del docente
+$stmtDocente = $conn->prepare("SELECT id FROM Docente WHERE nombre = ?");
+$stmtDocente->bind_param("s", $nombre_docente);
+$stmtDocente->execute();
+$resultDocente = $stmtDocente->get_result();
+if ($resultDocente->num_rows === 0) {
+    echo json_encode(["error" => "No se encontró el docente especificado."]);
+    exit;
+}
+$id_docente = $resultDocente->fetch_assoc()["id"];
+$stmtDocente->close();
+
+// Buscar ID de la materia
+$stmtMateria = $conn->prepare("SELECT id FROM Materia WHERE nombre = ?");
+$stmtMateria->bind_param("s", $nombre_materia);
+$stmtMateria->execute();
+$resultMateria = $stmtMateria->get_result();
+if ($resultMateria->num_rows === 0) {
+    echo json_encode(["error" => "No se encontró la materia especificada."]);
+    exit;
+}
+$id_materia = $resultMateria->fetch_assoc()["id"];
+$stmtMateria->close();
 
 // Insertar la asignación
 $stmtInsert = $conn->prepare("INSERT INTO Asignado (id_campo, id_docente, id_materia, id_turno, id_usuario, descripcion, requerimientos, dias, fecha_inicio, fecha_final) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

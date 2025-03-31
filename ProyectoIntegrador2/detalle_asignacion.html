@@ -10,13 +10,23 @@
 <body>
 
     <style>
+         .btn-export {
+        background-color: #299041;
+        color: white;
+        border: none;
+        }
+        .btn-export:hover {
+            background-color: #1a692b;
+            color: white;
+        }
+         
          .btn-imprimir {
-        background-color: #28a745;
+        background-color: #4c30b2;
         color: white;
         border: none;
         }
         .btn-imprimir:hover {
-            background-color: #218838;
+            background-color: #7556e5;
             color: white;
         }
 
@@ -80,6 +90,8 @@
         </table>   
         <!-- ✅ Botones en la esquina inferior derecha -->
         <div class="botones-container">
+            
+            <button id="excelexport" class="btn btn-export"> Exportat Detalles a Excel</button>
             <button id="imprimir" class="btn btn-imprimir">🖨 Imprimir Detalles Asignacion</button>
             <button id="eliminar" class="btn btn-eliminar">🗑 Eliminar Asignación</button>
         </div>  
@@ -89,6 +101,8 @@
     <script src="archivos_js/mostrar_detalle_asignacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="archivos_js/imprimir_formulario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="archivos_js/excel_formulario.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const nombre = localStorage.getItem("usuarioNombre");

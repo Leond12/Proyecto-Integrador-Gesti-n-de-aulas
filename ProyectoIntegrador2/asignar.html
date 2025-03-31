@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="estilos_general/estilo.css">
+    
 </head>
 <body>
 
@@ -108,10 +109,7 @@
                         <input class="form-check-input" type="checkbox" id="dia6" value="6">
                         <label class="form-check-label" for="dia6">Sábado</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="dia7" value="7">
-                        <label class="form-check-label" for="dia7">Domingo</label>
-                    </div>
+                   
                 </div>
                 
 
@@ -130,6 +128,9 @@
     <script src="archivos_js/guardar_asignacion.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="archivos_js/imprimir_formulario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="archivos_js/excel_formulario.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const nombre = localStorage.getItem("usuarioNombre");

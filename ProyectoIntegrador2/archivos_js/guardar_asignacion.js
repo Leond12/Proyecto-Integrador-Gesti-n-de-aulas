@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .filter(cb => cb.checked)
             .map(cb => cb.value)
             .join(","); // Ej: "1,3,5"
+        localStorage.setItem("diasSeleccionados", diasSeleccionados); // ✅ importante
 
 
 
@@ -43,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "Tarde 16-19": 4,
             "Noche 19-22": 5
         };
+
+        
 
         const turno = turnosMap[turnoTexto] || null;
         if (!turno) {
@@ -102,10 +105,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
                 localStorage.setItem("asignacionReciente", JSON.stringify(datosAsignacion));
             
+
+                document.getElementById("campo").setAttribute("readonly", true);
+                document.getElementById("docente").setAttribute("readonly", true);
+                document.getElementById("materia").setAttribute("readonly", true);
+                document.getElementById("turno").setAttribute("readonly", true);
+                document.getElementById("requerimientos").setAttribute("readonly", true);
+                document.getElementById("descripcion").setAttribute("readonly", true);
+                document.getElementById("fecha_inicio").setAttribute("readonly", true);
+                document.getElementById("fecha_final").setAttribute("readonly", true);
+
                 // Ocultar botones de buscar y limpiar
                 document.querySelectorAll("button.btn-danger").forEach(btn => btn.style.display = "none");
                 document.querySelectorAll("button.btn-outline-secondary").forEach(btn => btn.style.display = "none");
             
+                // Desactivar los checkboxes de días
+                document.querySelectorAll("input[type='checkbox'][id^='dia']").forEach(cb => {
+                    cb.disabled = true;
+                });
+
                 // Ocultar el botón de guardar
                 guardarBtn.style.display = "none";
             
@@ -144,6 +162,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 };
             
+
+                // Dentro del bloque if (data.success) después del botón "Imprimir"
+                const excelBtn = document.createElement("button");
+                excelBtn.textContent = "Exportar Excel";
+                excelBtn.className = "btn btn-success";
+                excelBtn.id = "excelexport";
+                accionesDiv.appendChild(excelBtn);
+
+                // Acción del botón
+                excelBtn.addEventListener("click", function () {
+                    const datos = JSON.parse(localStorage.getItem("asignacionReciente"));
+                    if (datos) {
+                        exportarExcel(datos);
+                    } else {
+                        alert("No hay datos para imprimir.");
+                    }
+                   
+                });
+
+
                 accionesDiv.appendChild(imprimirBtn);
                 accionesDiv.appendChild(volverBtn);            
 
