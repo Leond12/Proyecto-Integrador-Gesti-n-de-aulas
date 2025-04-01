@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginButton = document.querySelector("button");
 
     loginButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Evita el envío automático del formulario
+        event.preventDefault();
 
         let usuario = document.getElementById("usuario").value.trim();
         let contrasena = document.getElementById("contrasena").value.trim();
@@ -24,13 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                localStorage.setItem("usuarioNombre", data.nombre); // ← Aquí guarda el nombre real
+                // ✅ Guardar ID, nombre y rol del usuario
+                localStorage.setItem("usuarioId", data.id); // ID para guardar en asignación
+                localStorage.setItem("usuarioNombre", data.nombre);
+                localStorage.setItem("rol", data.rol);
 
+                // También en sessionStorage si lo usas
                 sessionStorage.setItem("usuario", data.nombre);
                 sessionStorage.setItem("rol", data.rol);
 
-                window.location.href = "menu.html"; // Redirige al menú principal
-
+                window.location.href = "menu.html";
             } else {
                 showMessage("Error: " + data.message, "alert-danger");
             }
