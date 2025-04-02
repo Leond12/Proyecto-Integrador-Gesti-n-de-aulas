@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exportar - Gestión de Aulas</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos_general/estilo.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        .vista {
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            width: 80%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vista h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0d6efd;
+        }
+        
+        .vista input[type="text"],
+        .vista input[type="search"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .vista label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .vista .checkbox-group,
+        .vista .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .vista input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 8px;
+        }
+        
+        .vista button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .vista button:hover {
+            background-color: #0b5ed7;
+        }
+
+        .vista .btn-secondary {
+            padding: 10px 15px;
+            border: none;
+            background-color: #ff5319;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vista .btn-secondary:hover {
+            background-color: #fa3e00;
+        }
+
+        .vista .btn-ex {
+            padding: 10px 15px;
+            border: none;
+            background-color: #2eaf39;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vista .btn-ex:hover {
+            background-color: #189122;
+        }
+    </style>
+        
+    
+</head>
+<body>
+    <!-- Encabezado -->
+    <div class="menu-header">
+        <span class="user-info"><i class="fas fa-user"></i> (Usuario)</span>
+        <h1 class="page-title">Exportar Asignaciones 2025</h1>
+        <a href="menu.html" class="button-confirm" id="btn-volver">Menu P</a>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <div class="menu-container" id="menu-opciones">
+        <img src="imagenes/utepsa_blanco.png" alt="Logo UTEPSA" class="main-image">
+        <div class="menu-buttons">
+            <button class="menu-button" onclick="mostrarVista('vista-aula')">
+                <i class="fas fa-calendar-check"></i> Asignaciones por Aula/Laboratorio/Salón
+            </button>
+            <button class="menu-button" onclick="mostrarVista('vista-modulo')">
+                <i class="fas fa-calendar-check"></i> Asignaciones por Módulo
+            </button>
+            <button class="menu-button" onclick="mostrarVista('vista-semestre')">
+                <i class="fas fa-calendar-check"></i> Asignaciones por Semestre
+            </button>
+        </div>
+    </div>
+
+    <!-- Vista Aula -->
+    <div class="menu-container" id="filtro-aula" style="display: none; text-align: center;">
+        <input type="text" class="form-control w-50 mx-auto" placeholder="Buscar aula/laboratorio...">
+    </div>
+
+    <!-- Vista Módulo -->
+    <div class="menu-container" id="filtro-modulo" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="semestre" id="semestre1" value="1">
+                    <label class="form-check-label" for="semestre1">1er Semestre</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="semestre" id="semestre2" value="2">
+                    <label class="form-check-label" for="semestre2">2do Semestre</label>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-start">
+                <button class="btn btn-outline-primary mb-2 btn-modulo" data-modulo="0">Mod 0</button>
+                <button class="btn btn-outline-primary mb-2 btn-modulo" data-modulo="1">Mod 1</button>
+                <button class="btn btn-outline-primary mb-2 btn-modulo" data-modulo="2">Mod 2</button>
+                <button class="btn btn-outline-primary mb-2 btn-modulo" data-modulo="3">Mod 3</button>
+                <button class="btn btn-outline-primary mb-2 btn-modulo" data-modulo="4">Mod 4</button>
+                <button class="btn btn-outline-primary mb-2 btn-modulo" data-modulo="5">Mod 5</button>             
+            </div>
+        </div>
+    </div>
+
+    <!-- Vista Semestre -->
+    <div class="menu-container" id="filtro-semestre" style="display: none;">
+        <div class="d-flex flex-column align-items-center">
+            <button class="btn btn-outline-secondary mb-3">Semestre 1</button>
+            <button class="btn btn-outline-secondary">Semestre 2</button>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="archivos_js/exportar_filtros.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="archivos_js/exportar_por_aula.js"></script>
+    <script src="archivos_js/exportar_por_modulo.js"></script>
+    <script src="archivos_js/exportar_por_semestre.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nombre = localStorage.getItem("usuarioNombre");
+            if (nombre) {
+                const userSpans = document.querySelectorAll(".user-info");
+                userSpans.forEach(span => span.textContent = `👤 ${nombre}`);
+            }
+        });
+    </script>
+</body>
+</html>

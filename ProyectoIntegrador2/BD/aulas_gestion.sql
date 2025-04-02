@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 30-03-2025 a las 16:48:29
+-- Tiempo de generación: 02-04-2025 a las 00:08:28
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.2.0
 
@@ -40,23 +40,21 @@ CREATE TABLE IF NOT EXISTS `asignado` (
   `dias` varchar(50) DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_final` date DEFAULT NULL,
+  `fecha_registro` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_campo` (`id_campo`),
   KEY `id_docente` (`id_docente`),
   KEY `id_materia` (`id_materia`),
   KEY `id_turno` (`id_turno`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `asignado`
 --
 
-INSERT INTO `asignado` (`id`, `id_campo`, `id_docente`, `id_materia`, `id_turno`, `id_usuario`, `descripcion`, `requerimientos`, `dias`, `fecha_inicio`, `fecha_final`) VALUES
-(1, 1, 2, 3, 1, 1, 'Asignación de laboratorio para prácticas de redes.', 'Se requiere proyector y acceso a internet.', '1,3,5', '2024-04-01', '2024-06-30'),
-(2, 1, 1, 4, 1, 1, 'oo', NULL, NULL, '2025-03-28', '2025-03-29'),
-(3, 6, 3, 5, 1, 1, 'nariz', NULL, NULL, '2025-03-28', '2025-03-30'),
-(4, 16, 0, 0, 1, 1, 'qqqq', 'qqqq', '1,2,3,4', '2025-03-28', '2025-03-30');
+INSERT INTO `asignado` (`id`, `id_campo`, `id_docente`, `id_materia`, `id_turno`, `id_usuario`, `descripcion`, `requerimientos`, `dias`, `fecha_inicio`, `fecha_final`, `fecha_registro`) VALUES
+(34, 1, 1, 2, 1, 1, 'aula asignada para ciencias de la computacion', '-wampserver\n-visual estudio code', '1,2,3,4,5', '2025-04-03', '2025-05-05', '2025-04-01 22:47:09');
 
 -- --------------------------------------------------------
 
@@ -88,7 +86,7 @@ INSERT INTO `campo` (`id`, `numero`, `piso`, `capacidad`, `tipo`, `descripcion`,
 (3, 'N200', 2, 30, 'Laboratorio', 'NN', 'disponible', 3),
 (4, 'N200', 2, 30, 'Laboratorio', 'NN', 'disponible', 4),
 (5, 'N200', 2, 30, 'Laboratorio', 'NN', 'disponible', 5),
-(6, 'N201', 2, 30, 'Laboratorio', 'NN', 'ocupado', 1),
+(6, 'N201', 2, 30, 'Laboratorio', 'NN', 'disponible', 1),
 (7, 'N201', 2, 30, 'Laboratorio', 'NN', 'disponible', 2),
 (8, 'N201', 2, 30, 'Laboratorio', 'NN', 'disponible', 3),
 (9, 'N201', 2, 30, 'Laboratorio', 'NN', 'disponible', 4),
@@ -98,7 +96,7 @@ INSERT INTO `campo` (`id`, `numero`, `piso`, `capacidad`, `tipo`, `descripcion`,
 (13, 'N211', 2, 30, 'Laboratorio', 'NN', 'disponible', 3),
 (14, 'N211', 2, 30, 'Laboratorio', 'NN', 'disponible', 4),
 (15, 'N211', 2, 30, 'Laboratorio', 'NN', 'disponible', 5),
-(16, 'N212', 2, 30, 'Otro', 'NN', 'ocupado', 1),
+(16, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 1),
 (17, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 2),
 (18, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 3),
 (19, 'N212', 2, 30, 'Otro', 'NN', 'disponible', 4),
@@ -303,16 +301,20 @@ CREATE TABLE IF NOT EXISTS `docente` (
   `telefono` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ci` (`ci`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `docente`
 --
 
 INSERT INTO `docente` (`id`, `ci`, `nombre`, `telefono`) VALUES
-(1, 'a', 'a', 'a'),
-(2, 'b', 'b', 'b'),
-(3, '123', 'alan', '12345678');
+(1, '1111111', 'Dennis Delgado', '11111111'),
+(2, '2222222', 'Rolando Cespedes', '22222222'),
+(3, '3333333', 'Franz Troche', '33333333'),
+(4, '4444444', 'German Parraga', '44444444'),
+(5, '5555555', 'Julio Cesar', '55555555'),
+(6, '6666666', 'Fernando Cajiri', '66666666'),
+(7, '7777777', 'Marcelo Yanez', '77777777');
 
 -- --------------------------------------------------------
 
@@ -429,14 +431,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_rol` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_rol` (`id_rol`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `contraseña`, `id_rol`) VALUES
-(1, 'admin', '123', 1);
+(1, 'admin', '123', 1),
+(2, 'admin2', '123', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

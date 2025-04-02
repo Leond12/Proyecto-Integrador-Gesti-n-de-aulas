@@ -39,6 +39,7 @@ $requerimientos = isset($data["requerimientos"]) ? $data["requerimientos"] : "";
 $dias = isset($data["dias"]) ? $data["dias"] : "";
 $fecha_inicio = $data["fecha_inicio"];
 $fecha_final = $data["fecha_final"];
+$fecha_registro = date("Y-m-d H:i:s"); // ✅ fecha y hora actual
 
 // Obtener el ID real del campo por su número
 $stmtCampo = $conn->prepare("SELECT id FROM Campo WHERE numero = ?");
@@ -78,8 +79,17 @@ $id_materia = $resultMateria->fetch_assoc()["id"];
 $stmtMateria->close();
 
 // Insertar la asignación
-$stmtInsert = $conn->prepare("INSERT INTO Asignado (id_campo, id_docente, id_materia, id_turno, id_usuario, descripcion, requerimientos, dias, fecha_inicio, fecha_final) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmtInsert->bind_param("iiiiisssss", $id_campo, $id_docente, $id_materia, $id_turno, $id_usuario, $descripcion, $requerimientos, $dias, $fecha_inicio, $fecha_final);
+$stmtInsert = $conn->prepare(
+    "INSERT INTO Asignado (
+        id_campo, id_docente, id_materia, id_turno, id_usuario, 
+        descripcion, requerimientos, dias, fecha_inicio, fecha_final, fecha_registro
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+);
+$stmtInsert->bind_param(
+    "iiiiissssss", 
+    $id_campo, $id_docente, $id_materia, $id_turno, $id_usuario, 
+    $descripcion, $requerimientos, $dias, $fecha_inicio, $fecha_final, $fecha_registro
+);
 
 if ($stmtInsert->execute()) {
     // Cambiar el estado del campo a "ocupado"
